@@ -1,0 +1,21 @@
+.img-galery {
+    width: 100%;
+    text-align: center;
+    column-count: 4;
+}
+
+.img-galery-children {
+    display: inline-block;
+}
+
+@media (max-width: 1200px) {
+    .img-galery {
+        column-count: 3;
+    }
+}
+
+@media (max-width: 650px) {
+    .img-galery {
+        column-count: 1;
+    }
+}

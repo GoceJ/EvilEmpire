@@ -1,0 +1,962 @@
+[
+    {
+        "league": "NBA Regular Season",
+        "team1": {
+            "name": "Toronto Raptors",
+            "coef": "1.74",
+            "q1": "41",
+            "q2": "26",
+            "q3": "31",
+            "q4": "26"
+        },
+        "team2": {
+            "name": "Cleveland Cavaliers",
+            "coef": "2.30",
+            "q1": "32",
+            "q2": "27",
+            "q3": "32",
+            "q4": "30"
+        },
+        "home-team": "Toronto Raptors"
+    },
+    {
+        "league": "NBA Regular Season",
+        "team1": {
+            "name": "Houston Rockets",
+            "coef": "1.30",
+            "q1": "31",
+            "q2": "28",
+            "q3": "47",
+            "q4": "30"
+        },
+        "team2": {
+            "name": "Detroit Pistons",
+            "coef": "3.80",
+            "q1": "29",
+            "q2": "26",
+            "q3": "25",
+            "q4": "33"
+        },
+        "home-team": "Houston Rockets"
+    },
+    {
+        "league": "NBA Regular Season",
+        "team1": {
+            "name": "Milwaukee Bucks",
+            "coef": "1.33",
+            "q1": "32",
+            "q2": "30",
+            "q3": "26",
+            "q4": "25"
+        },
+        "team2": {
+            "name": "Indiana Pacers",
+            "coef": "3.35",
+            "q1": "25",
+            "q2": "31",
+            "q3": "28",
+            "q4": "38"
+        },
+        "home-team": "Milwaukee Bucks"
+    },
+    {
+        "league": "NBA Regular Season",
+        "team1": {
+            "name": "Denver Nuggets",
+            "coef": "1.10",
+            "q1": "24",
+            "q2": "25",
+            "q3": "40",
+            "q4": "22"
+        },
+        "team2": {
+            "name": "Charlotte Hornets",
+            "coef": "6.50",
+            "q1": "18",
+            "q2": "31",
+            "q3": "17",
+            "q4": "27"
+        },
+        "home-team": "Denver Nuggets"
+    },
+    {
+        "league": "NBA Regular Season",
+        "team1": {
+            "name": "Utah Jazz",
+            "coef": "2.40",
+            "q1": "37",
+            "q2": "25",
+            "q3": "31",
+            "q4": "34"
+        },
+        "team2": {
+            "name": "Dallas Mavericks",
+            "coef": "1.67",
+            "q1": "26",
+            "q2": "29",
+            "q3": "24",
+            "q4": "11"
+        },
+        "home-team": "Utah Jazz"
+    },
+    {
+        "league": "NBA Regular Season",
+        "team1": {
+            "name": "Phoenix Suns",
+            "coef": "1.32",
+            "q1": "20",
+            "q2": "35",
+            "q3": "31",
+            "q4": "23"
+        },
+        "team2": {
+            "name": "Portland Trail Blazers",
+            "coef": "3.85",
+            "q1": "29",
+            "q2": "18",
+            "q3": "14",
+            "q4": "27"
+        },
+        "home-team": "Phoenix Suns"
+    },
+    {
+        "league": "NBA Regular Season",
+        "team1": {
+            "name": "LA Clippers",
+            "coef": "1.37",
+            "q1": "23",
+            "q2": "36",
+            "q3": "36",
+            "q4": "26"
+        },
+        "team2": {
+            "name": "Miami Heat",
+            "coef": "3.35",
+            "q1": "35",
+            "q2": "23",
+            "q3": "27",
+            "q4": "19"
+        },
+        "home-team": "LA Clippers"
+    },
+    {
+        "league": "WJBL",
+        "team1": {
+            "name": "Haneda Vickies (W)",
+            "coef": "0.00",
+            "q1": "21",
+            "q2": "17",
+            "q3": "13",
+            "q4": "19"
+        },
+        "team2": {
+            "name": "Hitachi Cougars (W)",
+            "coef": "0.00",
+            "q1": "30",
+            "q2": "18",
+            "q3": "12",
+            "q4": "11"
+        },
+        "home-team": "Haneda Vickies (W)"
+    },
+    {
+        "league": "South Korea KBL",
+        "team1": {
+            "name": "Wonju DB Promy",
+            "coef": "1.07",
+            "q1": "21",
+            "q2": "25",
+            "q3": "22",
+            "q4": "20"
+        },
+        "team2": {
+            "name": "Goyang Carrot Jumpers",
+            "coef": "9.00",
+            "q1": "27",
+            "q2": "20",
+            "q3": "27",
+            "q4": "20"
+        },
+        "home-team": "Wonju DB Promy"
+    },
+    {
+        "league": "South Korea KBL",
+        "team1": {
+            "name": "Anyang JKJ Red Boosters",
+            "coef": "4.45",
+            "q1": "16",
+            "q2": "21",
+            "q3": "19",
+            "q4": "28"
+        },
+        "team2": {
+            "name": "LG Sakers",
+            "coef": "1.23",
+            "q1": "12",
+            "q2": "31",
+            "q3": "23",
+            "q4": "14"
+        },
+        "home-team": "Anyang JKJ Red Boosters"
+    },
+    {
+        "league": "Mongolia MBL",
+        "team1": {
+            "name": "Brothers BC",
+            "coef": "0.00",
+            "q1": "17",
+            "q2": "21",
+            "q3": "12",
+            "q4": "13"
+        },
+        "team2": {
+            "name": "IHC Apes",
+            "coef": "0.00",
+            "q1": "20",
+            "q2": "7",
+            "q3": "22",
+            "q4": "27"
+        },
+        "home-team": "Brothers BC"
+    },
+    {
+        "league": "China CDBL",
+        "team1": {
+            "name": "Guangdong Miners",
+            "coef": "0.00",
+            "q1": "22",
+            "q2": "24",
+            "q3": "19",
+            "q4": "24"
+        },
+        "team2": {
+            "name": "Liaoning Warriors",
+            "coef": "0.00",
+            "q1": "22",
+            "q2": "23",
+            "q3": "22",
+            "q4": "28"
+        },
+        "home-team": "Guangdong Miners"
+    },
+    {
+        "league": "Hong Kong BL",
+        "team1": {
+            "name": "Pegasus",
+            "coef": "0.00",
+            "q1": "2",
+            "q2": "16",
+            "q3": "13",
+            "q4": "15"
+        },
+        "team2": {
+            "name": "South China",
+            "coef": "0.00",
+            "q1": "6",
+            "q2": "23",
+            "q3": "27",
+            "q4": "56"
+        },
+        "home-team": "Pegasus"
+    },
+    {
+        "league": "China CBA",
+        "team1": {
+            "name": "Shandong Hi-Speed Kirin",
+            "coef": "1.16",
+            "q1": "36",
+            "q2": "28",
+            "q3": "27",
+            "q4": "18"
+        },
+        "team2": {
+            "name": "Ningbo Rockets",
+            "coef": "5.35",
+            "q1": "35",
+            "q2": "18",
+            "q3": "29",
+            "q4": "21"
+        },
+        "home-team": "Shandong Hi-Speed Kirin"
+    },
+    {
+        "league": "China CBA",
+        "team1": {
+            "name": "Shenzhen Aviators",
+            "coef": "1.61",
+            "q1": "29",
+            "q2": "31",
+            "q3": "22",
+            "q4": "29"
+        },
+        "team2": {
+            "name": "Shanghai Sharks",
+            "coef": "2.40",
+            "q1": "25",
+            "q2": "28",
+            "q3": "31",
+            "q4": "28"
+        },
+        "home-team": "Shenzhen Aviators"
+    },
+    {
+        "league": "China CDBL",
+        "team1": {
+            "name": "Guangdong Miners",
+            "coef": "0.00",
+            "q1": "25",
+            "q2": "24",
+            "q3": "30",
+            "q4": "20"
+        },
+        "team2": {
+            "name": "Yunnan Pirates",
+            "coef": "0.00",
+            "q1": "26",
+            "q2": "20",
+            "q3": "24",
+            "q4": "18"
+        },
+        "home-team": "Guangdong Miners"
+    },
+    {
+        "league": "Iran Super League (M)",
+        "team1": {
+            "name": "Averta",
+            "coef": "0.00",
+            "q1": "20",
+            "q2": "22",
+            "q3": "21",
+            "q4": "7"
+        },
+        "team2": {
+            "name": "Kalleh",
+            "coef": "0.00",
+            "q1": "16",
+            "q2": "19",
+            "q3": "26",
+            "q4": "22"
+        },
+        "home-team": "Averta"
+    },
+    {
+        "league": "Mongolia MBL",
+        "team1": {
+            "name": "Selenge",
+            "coef": "0.00",
+            "q1": "16",
+            "q2": "12",
+            "q3": "19",
+            "q4": "23"
+        },
+        "team2": {
+            "name": "Khasiin Khuleguud",
+            "coef": "0.00",
+            "q1": "18",
+            "q2": "24",
+            "q3": "25",
+            "q4": "30"
+        },
+        "home-team": "Selenge"
+    },
+    {
+        "league": "Hong Kong BL",
+        "team1": {
+            "name": "Tycoon",
+            "coef": "0.00",
+            "q1": "24",
+            "q2": "24",
+            "q3": "27",
+            "q4": "16"
+        },
+        "team2": {
+            "name": "Fukien",
+            "coef": "0.00",
+            "q1": "17",
+            "q2": "20",
+            "q3": "18",
+            "q4": "16"
+        },
+        "home-team": "Tycoon"
+    },
+    {
+        "league": "Iran Super League (M)",
+        "team1": {
+            "name": "Tabiat",
+            "coef": "0.00",
+            "q1": "15",
+            "q2": "20",
+            "q3": "18",
+            "q4": "22"
+        },
+        "team2": {
+            "name": "Mes Kerman",
+            "coef": "0.00",
+            "q1": "25",
+            "q2": "12",
+            "q3": "16",
+            "q4": "23"
+        },
+        "home-team": "Tabiat"
+    },
+    {
+        "league": "Qatar QBL",
+        "team1": {
+            "name": "Al-Rayyan",
+            "coef": "0.00",
+            "q1": "15",
+            "q2": "15",
+            "q3": "17",
+            "q4": "22"
+        },
+        "team2": {
+            "name": "Al Ahly Doha",
+            "coef": "0.00",
+            "q1": "19",
+            "q2": "13",
+            "q3": "21",
+            "q4": "24"
+        },
+        "home-team": "Al-Rayyan"
+    },
+    {
+        "league": "Bahrain Premier League",
+        "team1": {
+            "name": "ISSA Town",
+            "coef": "0.00",
+            "q1": "21",
+            "q2": "21",
+            "q3": "23",
+            "q4": "21"
+        },
+        "team2": {
+            "name": "Al Ahly Manama",
+            "coef": "0.00",
+            "q1": "32",
+            "q2": "28",
+            "q3": "28",
+            "q4": "24"
+        },
+        "home-team": "ISSA Town"
+    },
+    {
+        "league": "Qatar QBL",
+        "team1": {
+            "name": "Al Sadd",
+            "coef": "0.00",
+            "q1": "22",
+            "q2": "19",
+            "q3": "20",
+            "q4": "26"
+        },
+        "team2": {
+            "name": "Al Gharafa",
+            "coef": "0.00",
+            "q1": "20",
+            "q2": "24",
+            "q3": "24",
+            "q4": "19"
+        },
+        "home-team": "Al Sadd"
+    },
+    {
+        "league": "Bahrain Premier League",
+        "team1": {
+            "name": "Al Hala",
+            "coef": "0.00",
+            "q1": "39",
+            "q2": "24",
+            "q3": "20",
+            "q4": "16"
+        },
+        "team2": {
+            "name": "Bahrain Club",
+            "coef": "0.00",
+            "q1": "9",
+            "q2": "16",
+            "q3": "8",
+            "q4": "21"
+        },
+        "home-team": "Al Hala"
+    },
+    {
+        "league": "Finland Korisliiga",
+        "team1": {
+            "name": "Helsinki Seagulls",
+            "coef": "1.04",
+            "q1": "19",
+            "q2": "24",
+            "q3": "29",
+            "q4": "29"
+        },
+        "team2": {
+            "name": "KTP Basket Kotka",
+            "coef": "10.0",
+            "q1": "25",
+            "q2": "20",
+            "q3": "22",
+            "q4": "21"
+        },
+        "home-team": "Helsinki Seagulls"
+    },
+    {
+        "league": "Finland Korisliiga",
+        "team1": {
+            "name": "Kouvot",
+            "coef": "1.32",
+            "q1": "15",
+            "q2": "13",
+            "q3": "17",
+            "q4": "29"
+        },
+        "team2": {
+            "name": "Pyrinto Tampere",
+            "coef": "3.50",
+            "q1": "19",
+            "q2": "22",
+            "q3": "18",
+            "q4": "21"
+        },
+        "home-team": "Kouvot"
+    },
+    {
+        "league": "Finland Korisliiga",
+        "team1": {
+            "name": "Salon Vilpas",
+            "coef": "2.09",
+            "q1": "17",
+            "q2": "18",
+            "q3": "23",
+            "q4": "21"
+        },
+        "team2": {
+            "name": "BC Nokia",
+            "coef": "1.79",
+            "q1": "20",
+            "q2": "24",
+            "q3": "26",
+            "q4": "18"
+        },
+        "home-team": "Salon Vilpas"
+    },
+    {
+        "league": "Israel Liga Leumit",
+        "team1": {
+            "name": "Hapoel Bnei Kfar Kasem",
+            "coef": "0.00",
+            "q1": "18",
+            "q2": "21",
+            "q3": "36",
+            "q4": "26"
+        },
+        "team2": {
+            "name": "Ironi Nahariya",
+            "coef": "0.00",
+            "q1": "18",
+            "q2": "27",
+            "q3": "19",
+            "q4": "15"
+        },
+        "home-team": "Hapoel Bnei Kfar Kasem"
+    },
+    {
+        "league": "Israel Liga Leumit",
+        "team1": {
+            "name": "Maccabi R. LeZion",
+            "coef": "0.00",
+            "q1": "18",
+            "q2": "13",
+            "q3": "24",
+            "q4": "13"
+        },
+        "team2": {
+            "name": "Elitzur Netanya",
+            "coef": "0.00",
+            "q1": "22",
+            "q2": "20",
+            "q3": "14",
+            "q4": "19"
+        },
+        "home-team": "Maccabi R. LeZion"
+    },
+    {
+        "league": "Israel Liga Leumit",
+        "team1": {
+            "name": "Ramat Hasharon",
+            "coef": "0.00",
+            "q1": "20",
+            "q2": "18",
+            "q3": "19",
+            "q4": "19"
+        },
+        "team2": {
+            "name": "Maccabi Raanana",
+            "coef": "0.00",
+            "q1": "22",
+            "q2": "18",
+            "q3": "17",
+            "q4": "25"
+        },
+        "home-team": "Ramat Hasharon"
+    },
+    {
+        "league": "Israel Liga Leumit",
+        "team1": {
+            "name": "Elitzur Ashkelon",
+            "coef": "0.00",
+            "q1": "33",
+            "q2": "28",
+            "q3": "20",
+            "q4": "21"
+        },
+        "team2": {
+            "name": "Maccabi Haifa",
+            "coef": "0.00",
+            "q1": "28",
+            "q2": "16",
+            "q3": "17",
+            "q4": "29"
+        },
+        "home-team": "Elitzur Ashkelon"
+    },
+    {
+        "league": "Champions League (M)",
+        "team1": {
+            "name": "PAOK",
+            "coef": "1.70",
+            "q1": "12",
+            "q2": "14",
+            "q3": "16",
+            "q4": "21"
+        },
+        "team2": {
+            "name": "Tofas",
+            "coef": "2.30",
+            "q1": "27",
+            "q2": "26",
+            "q3": "24",
+            "q4": "18"
+        },
+        "home-team": "PAOK"
+    },
+    {
+        "league": "Israel Liga Leumit",
+        "team1": {
+            "name": "Maccabi Rehovot",
+            "coef": "0.00",
+            "q1": "23",
+            "q2": "36",
+            "q3": "20",
+            "q4": "20"
+        },
+        "team2": {
+            "name": "Safed",
+            "coef": "0.00",
+            "q1": "28",
+            "q2": "21",
+            "q3": "15",
+            "q4": "14"
+        },
+        "home-team": "Maccabi Rehovot"
+    },
+    {
+        "league": "Latvia-Estonian League",
+        "team1": {
+            "name": "Prometey BC",
+            "coef": "0.00",
+            "q1": "16",
+            "q2": "22",
+            "q3": "17",
+            "q4": "26"
+        },
+        "team2": {
+            "name": "Latvijas Univ.",
+            "coef": "42.0",
+            "q1": "13",
+            "q2": "12",
+            "q3": "7",
+            "q4": "15"
+        },
+        "home-team": "Prometey BC"
+    },
+    {
+        "league": "Euroleague (M)",
+        "team1": {
+            "name": "Fenerbahce",
+            "coef": "1.37",
+            "q1": "26",
+            "q2": "9",
+            "q3": "22",
+            "q4": "19"
+        },
+        "team2": {
+            "name": "Crvena Zvezda",
+            "coef": "3.75",
+            "q1": "18",
+            "q2": "16",
+            "q3": "23",
+            "q4": "28"
+        },
+        "home-team": "Fenerbahce"
+    },
+    {
+        "league": "Euroleague (M)",
+        "team1": {
+            "name": "Zalgiris",
+            "coef": "1.37",
+            "q1": "22",
+            "q2": "26",
+            "q3": "13",
+            "q4": "16"
+        },
+        "team2": {
+            "name": "ALBA Berlin",
+            "coef": "3.55",
+            "q1": "25",
+            "q2": "16",
+            "q3": "11",
+            "q4": "19"
+        },
+        "home-team": "Zalgiris"
+    },
+    {
+        "league": "Germany Pro A",
+        "team1": {
+            "name": "Giessen",
+            "coef": "1.64",
+            "q1": "21",
+            "q2": "20",
+            "q3": "24",
+            "q4": "16"
+        },
+        "team2": {
+            "name": "Gladiators Trier",
+            "coef": "2.35",
+            "q1": "22",
+            "q2": "27",
+            "q3": "18",
+            "q4": "18"
+        },
+        "home-team": "Giessen"
+    },
+    {
+        "league": "Germany Pro A",
+        "team1": {
+            "name": "Artland Dragons",
+            "coef": "4.40",
+            "q1": "20",
+            "q2": "17",
+            "q3": "29",
+            "q4": "17"
+        },
+        "team2": {
+            "name": "Bayreuth",
+            "coef": "1.22",
+            "q1": "16",
+            "q2": "16",
+            "q3": "13",
+            "q4": "25"
+        },
+        "home-team": "Artland Dragons"
+    },
+    {
+        "league": "Germany Pro A",
+        "team1": {
+            "name": "Dresden Titans",
+            "coef": "1.16",
+            "q1": "36",
+            "q2": "23",
+            "q3": "18",
+            "q4": "20"
+        },
+        "team2": {
+            "name": "Rasta Vechta II",
+            "coef": "5.45",
+            "q1": "30",
+            "q2": "25",
+            "q3": "23",
+            "q4": "16"
+        },
+        "home-team": "Dresden Titans"
+    },
+    {
+        "league": "Germany Pro A",
+        "team1": {
+            "name": "Kirchheim Knights",
+            "coef": "1.17",
+            "q1": "20",
+            "q2": "19",
+            "q3": "27",
+            "q4": "19"
+        },
+        "team2": {
+            "name": "Uni Baskets Paderborn",
+            "coef": "5.25",
+            "q1": "17",
+            "q2": "17",
+            "q3": "15",
+            "q4": "19"
+        },
+        "home-team": "Kirchheim Knights"
+    },
+    {
+        "league": "Germany Pro A",
+        "team1": {
+            "name": "Nürnberg Falcons BC",
+            "coef": "1.55",
+            "q1": "21",
+            "q2": "15",
+            "q3": "16",
+            "q4": "10"
+        },
+        "team2": {
+            "name": "WWU Baskets Munster",
+            "coef": "2.55",
+            "q1": "24",
+            "q2": "20",
+            "q3": "24",
+            "q4": "16"
+        },
+        "home-team": "Nürnberg Falcons BC"
+    },
+    {
+        "league": "Germany Pro A",
+        "team1": {
+            "name": "Giants Dusseldorf",
+            "coef": "2.50",
+            "q1": "28",
+            "q2": "15",
+            "q3": "10",
+            "q4": "22"
+        },
+        "team2": {
+            "name": "Bremerhaven",
+            "coef": "1.57",
+            "q1": "21",
+            "q2": "26",
+            "q3": "22",
+            "q4": "17"
+        },
+        "home-team": "Giants Dusseldorf"
+    },
+    {
+        "league": "Champions League (M)",
+        "team1": {
+            "name": "Ludwigsburg",
+            "coef": "1.24",
+            "q1": "20",
+            "q2": "20",
+            "q3": "25",
+            "q4": "17"
+        },
+        "team2": {
+            "name": "Darussafaka",
+            "coef": "4.15",
+            "q1": "17",
+            "q2": "16",
+            "q3": "12",
+            "q4": "18"
+        },
+        "home-team": "Ludwigsburg"
+    },
+    {
+        "league": "Germany BBL",
+        "team1": {
+            "name": "Ulm",
+            "coef": "1.20",
+            "q1": "15",
+            "q2": "23",
+            "q3": "28",
+            "q4": "24"
+        },
+        "team2": {
+            "name": "Braunschweig",
+            "coef": "5.35",
+            "q1": "11",
+            "q2": "21",
+            "q3": "21",
+            "q4": "20"
+        },
+        "home-team": "Ulm"
+    },
+    {
+        "league": "Euroleague (M)",
+        "team1": {
+            "name": "Maccabi T.A.",
+            "coef": "2.40",
+            "q1": "22",
+            "q2": "27",
+            "q3": "15",
+            "q4": "29"
+        },
+        "team2": {
+            "name": "Monaco BC",
+            "coef": "1.69",
+            "q1": "12",
+            "q2": "23",
+            "q3": "19",
+            "q4": "29"
+        },
+        "home-team": "Maccabi T.A."
+    },
+    {
+        "league": "Euroleague (M)",
+        "team1": {
+            "name": "Olympiacos",
+            "coef": "1.33",
+            "q1": "18",
+            "q2": "22",
+            "q3": "23",
+            "q4": "16"
+        },
+        "team2": {
+            "name": "Milano",
+            "coef": "3.85",
+            "q1": "19",
+            "q2": "16",
+            "q3": "15",
+            "q4": "24"
+        },
+        "home-team": "Olympiacos"
+    },
+    {
+        "league": "Iceland Premier League (W)",
+        "team1": {
+            "name": "Snaefell (W)",
+            "coef": "0.00",
+            "q1": "17",
+            "q2": "24",
+            "q3": "28",
+            "q4": "16"
+        },
+        "team2": {
+            "name": "Fjolnir Basket (W)",
+            "coef": "0.00",
+            "q1": "19",
+            "q2": "20",
+            "q3": "25",
+            "q4": "18"
+        },
+        "home-team": "Snaefell (W)"
+    },
+    {
+        "league": "Euroleague (M)",
+        "team1": {
+            "name": "Partizan",
+            "coef": "1.20",
+            "q1": "23",
+            "q2": "27",
+            "q3": "19",
+            "q4": "21"
+        },
+        "team2": {
+            "name": "ASVEL",
+            "coef": "5.50",
+            "q1": "17",
+            "q2": "14",
+            "q3": "14",
+            "q4": "32"
+        },
+        "home-team": "Partizan"
+    }
+]
