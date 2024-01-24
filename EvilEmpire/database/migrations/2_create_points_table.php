@@ -15,22 +15,16 @@ return new class extends Migration
     {
         Schema::create('points', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('t1_coef');
-            $table->foreignId('t2_coef');
-            $table->foreignId('t1_q1');
-            $table->foreignId('t1_q2');
-            $table->foreignId('t1_q3');
-            $table->foreignId('t1_q4');
-            $table->foreignId('t2_q1');
-            $table->foreignId('t2_q2');
-            $table->foreignId('t2_q3');
-            $table->foreignId('t2_q4');
-            $table->foreignId('t1_first_half');
-            $table->foreignId('t1_second_half');
-            $table->foreignId('t2_first_half');
-            $table->foreignId('t2_second_half');
-            $table->foreignId('t1_total');
-            $table->foreignId('t2_total');
+            $table->string('t1_coef');
+            $table->string('t2_coef');
+            $table->string('t1_q1');
+            $table->string('t1_q2');
+            $table->string('t1_q3');
+            $table->string('t1_q4');
+            $table->string('t2_q1');
+            $table->string('t2_q2');
+            $table->string('t2_q3');
+            $table->string('t2_q4');
             $table->timestamps();
         });
     }

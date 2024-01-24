@@ -69,7 +69,7 @@
             // Copy the data from table header to before table break
             let onlyResults = arr.slice(resultsIndex + 1, indexOfBreak)
             // Send data and size of the rows
-            js(onlyResults, onlyResults.length)
+            js(onlyResults, onlyResults.length, dateShow)
         } else {
             // If basketball is not slected
             if(resultsIndex == -1 && (arr[dateIndex + 3] == 'ФУДБАЛ' || arr[dateIndex + 2] == 'ФУДБАЛ' || arr[dateIndex + 4] == 'ФУДБАЛ' || arr[dateIndex + 3] == 'КОШАРКА' || arr[dateIndex + 2] == 'КОШАРКА' || arr[dateIndex + 4] == 'КОШАРКА')){
@@ -210,20 +210,25 @@ async function js(onlyResults, le){
         }
 
     // Make array to string
-    var jsonTeam = JSON.stringify(resultTeam)
-    var jsonPlayer = JSON.stringify(resultPlayer)
-        console.log("YEA BABY")
+    var jsonTeam = JSON.stringify((resultTeam));
+    // var jsonTeam = resultTeam
+    // var jsonPlayer = JSON.stringify(resultPlayer)
+    jsonTeam = jsonTeam.replace('[','');
+    jsonTeam = jsonTeam.replace(']','')
+        // console.log(jsonTeam)
         $.ajax({
                   type: "POST",
                   dataType: "json",
                   url: '{{ route("matchExportController.store") }}',
                   data: jsonTeam,
                   success: function (data) {
+                    console.log('f,yea');
                     console.log(data);
                   },
                   error: function (xhr, ajaxOptions, thrownError) {
-                    console.log(xhr.status);
-                    console.log(thrownError);
+                      console.log(xhr);
+                      console.log(ajaxOptions);
+                      console.log(thrownError);
                   },
                   headers: {
                       'X-CSRF-Token': '{{ csrf_token() }}',

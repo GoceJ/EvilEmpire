@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('t1_id')->references('id')->on('teams');
             $table->foreignId('t2_id')->references('id')->on('teams');
             $table->foreignId('points_id')->references('id')->on('points');
-            $table->string('league_id');
+            $table->foreignId('league_id')->references('id')->on('leagues');
             $table->foreignId('home_team')->references('id')->on('teams');
             $table->timestamps();
         });

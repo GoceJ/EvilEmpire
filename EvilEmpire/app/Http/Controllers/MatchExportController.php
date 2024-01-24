@@ -34,8 +34,17 @@ class MatchExportController extends Controller
      */
     public function store(Request $request)
     {
+        // $users = trim($request->getContent());
+        // file_put_contents(__DIR__ . '../../../../dddd.json', $users);
+
+        $new = [];
+        $oldData = file_get_contents(__DIR__ . '../../../../database/data/teams.json');
         $users = ($request->getContent());
-        file_put_contents('./dddd.json', $users . PHP_EOL, FILE_APPEND);
+        
+        $new = (!empty($oldData) ?  $oldData . ',' : '' ) . $users;
+        file_put_contents(__DIR__ . '../../../../database/data/teams.json', $new . PHP_EOL);
+                
+        echo json_encode(['200' => 'sucsess']);
     }
 
     /**
