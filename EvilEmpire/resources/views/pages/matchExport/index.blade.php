@@ -73,56 +73,62 @@
         } else {
             // If basketball is not slected
             if(resultsIndex == -1 && (arr[dateIndex + 3] == 'ФУДБАЛ' || arr[dateIndex + 2] == 'ФУДБАЛ' || arr[dateIndex + 4] == 'ФУДБАЛ' || arr[dateIndex + 3] == 'КОШАРКА' || arr[dateIndex + 2] == 'КОШАРКА' || arr[dateIndex + 4] == 'КОШАРКА')){
-              // $.ajax({
-              //     type: "POST",
-              //     dataType: "json",
-              //     url: '{{ route("matchExportController.store") }}',
-              //     data: {'person': person, 'person1': person1, 'person2': person2},
-              //     success: function (data) {
-              //     console.log("AIUKHDW");
-              // }
-            // });
-          
-                // saveFail(arr[dateIndex], 'basket not selected')
-            // If data failed to exist
+                let error = {
+                        'sport': 'basketball',
+                        'data_date': arr[dateIndex],
+                        'problem_type': 'basketball not selected'
+                }
+                
+                var jsonError = JSON.stringify((error));
+                $.ajax({
+                        type: "POST",
+                        dataType: "json",
+                        url: '{{ route("matchExportController.storeError") }}',
+                        data: jsonError,
+                        success: function (data) {
+                            document.getElementById('area').value = ''
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            document.getElementById('area').value = ''
+                            console.log(xhr);
+                            console.log(ajaxOptions);
+                            console.log(thrownError);
+                        },
+                        headers: {
+                            'X-CSRF-Token': '{{ csrf_token() }}',
+                        }
+                });
             } else {
-                // saveFail(arr[dateIndex], 'data didnt appear')
-                // console.log('123')
-                // let data22 = {
-                //         "data": {
-                //           'data1' : {
-                //             "id_encuesta" : 1,
-                //             "email" : "asd@hotmail.com",
-                //             "razon_social" : "asd",
-                //             "nro_ref_autopack" : 1
-                //           },
-                //           'data2': {
-                //             "id_encuesta" : 1,
-                //             "email" : "asd@hotmail.com",
-                //             "razon_social" : "asd",
-                //             "nro_ref_autopack" : 1
-                //           }
-                //       }
-                        
-                // }
-                // $.ajax({
-                //   type: "POST",
-                //   dataType: "json",
-                //   url: '{{ route("matchExportController.store") }}',
-                //   data: JSON.stringify(data22),
-                //   success: function (data) {
-                //     console.log(data);
-                //   },
-                //   error: function (xhr, ajaxOptions, thrownError) {
-                //     console.log(xhr.status);
-                //     console.log(thrownError);
-                //   },
-                //   headers: {
-                //       'X-CSRF-Token': '{{ csrf_token() }}',
-                //   }
-                // });
-            console.log('I222222222222f basketball is not slewdwdwdcted')
-
+                let error = {
+                        'sport': 'basketball',
+                        'data_date': arr[dateIndex],
+                        'problem_type': 'data not selected'
+                }
+                var d = new Date('March 3, 2024 23:15:30') ;
+                d.setFullYear(2005,3,15)
+                console.log('Today is: ' + d.toLocaleString());
+                d.setDate(d.getDate() - 300);
+                console.log('<br>5 days ago was: ' + d.toLocaleDateString('en-us', { day:"numeric", month:"numeric", year:"numeric" }));
+                
+                var jsonError = JSON.stringify((error));
+                $.ajax({
+                        type: "POST",
+                        dataType: "json",
+                        url: '{{ route("matchExportController.storeError") }}',
+                        data: jsonError,
+                        success: function (data) {
+                            document.getElementById('area').value = ''
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            document.getElementById('area').value = ''
+                            console.log(xhr);
+                            console.log(ajaxOptions);
+                            console.log(thrownError);
+                        },
+                        headers: {
+                            'X-CSRF-Token': '{{ csrf_token() }}',
+                        }
+                });
             }
         }
 
@@ -130,7 +136,7 @@
 })
 
 // Function for data saving
-async function js(onlyResults, le){
+async function js(onlyResults, le, dateShow){
     let resultTeam = []
     let resultPlayer = []
         // Lenght on rows to insert
@@ -181,7 +187,6 @@ async function js(onlyResults, le){
                             'q4': quartersCount >= 4 ? 
                                     rowArrRes[8][3][0].trim() : -1,
                         },
-    
                         'team2': 
                         {
                             'name': rowArrRes[7].trim(),
@@ -195,37 +200,43 @@ async function js(onlyResults, le){
                             'q4': quartersCount == 4 ? 
                                     rowArrRes[8][3][1].trim() : -1,
                         },
-    
-                        'home-team': rowArrRes[3].trim()
+                        'match_date': dateShow,
+                        'home_team': rowArrRes[3].trim()
                     })
                 } else if(player) {
                     resultPlayer.push({
                         'league': rowArrRes[2],
                         'player': rowArrRes[3],
-                        'player-info': rowArrRes[7],
-                        'points': rowArrRes[9][0]
+                        'team': rowArrRes[7],
+                        'match_date': dateShow,
+                        'points': (rowArrRes[9][0]).replace(' ','')
                     })
                 }
             }
         }
 
-    // Make array to string
-    var jsonTeam = JSON.stringify((resultTeam));
-    // var jsonTeam = resultTeam
-    // var jsonPlayer = JSON.stringify(resultPlayer)
-    jsonTeam = jsonTeam.replace('[','');
-    jsonTeam = jsonTeam.replace(']','')
-        // console.log(jsonTeam)
+        // Make array to string
+        var jsonTeam = JSON.stringify((resultTeam));
+        jsonTeam = jsonTeam.replace('[','');
+        jsonTeam = jsonTeam.replace(']','')
         $.ajax({
                   type: "POST",
                   dataType: "json",
-                  url: '{{ route("matchExportController.store") }}',
+                  url: '{{ route("matchExportController.storeTeam") }}',
                   data: jsonTeam,
                   success: function (data) {
-                    console.log('f,yea');
-                    console.log(data);
+                    document.getElementById('area').value = ''
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: "top-start",
+                        timer: 1000,
+                    });
+                    Toast.fire({
+                        title: "Team saved successfully"
+                    });
                   },
                   error: function (xhr, ajaxOptions, thrownError) {
+                    document.getElementById('area').value = ''
                       console.log(xhr);
                       console.log(ajaxOptions);
                       console.log(thrownError);
@@ -233,29 +244,38 @@ async function js(onlyResults, le){
                   headers: {
                       'X-CSRF-Token': '{{ csrf_token() }}',
                   }
-                });
+        });
 
-
-
-
-    // $.ajax({
-    //               type: "POST",
-    //               dataType: "json",
-    //               url: '{{ route("matchExportController.store") }}',
-    //               data: {'data': {'person': 'person', 'person1': 'person1', 'person2': 'person2'}},
-    //               success: function (data) {
-    //                 console.log(data);
-    //               },
-    //               error: function (xhr, ajaxOptions, thrownError) {
-    //                 console.log(xhr.status);
-    //                 console.log(thrownError);
-    //               },
-    //               headers: {
-    //                   'X-CSRF-Token': '{{ csrf_token() }}',
-    //               }
-    //             });
-
-    // console.log(resultTeam);
+        var jsonTeam = JSON.stringify((resultPlayer));
+        jsonTeam = jsonTeam.replace('[','');
+        jsonTeam = jsonTeam.replace(']','')
+        $.ajax({
+                  type: "POST",
+                  dataType: "json",
+                  url: '{{ route("matchExportController.storePlayer") }}',
+                  data: jsonTeam,
+                  success: function (data) {
+                    document.getElementById('area').value = ''
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 1000,
+                    });
+                    Toast.fire({
+                        title: "Player saved successfully"
+                    });
+                  },
+                  error: function (xhr, ajaxOptions, thrownError) {
+                    document.getElementById('area').value = ''
+                      console.log(xhr);
+                      console.log(ajaxOptions);
+                      console.log(thrownError);
+                  },
+                  headers: {
+                      'X-CSRF-Token': '{{ csrf_token() }}',
+                  }
+        });
 }
 
 </script>

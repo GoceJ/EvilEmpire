@@ -13,13 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('games', function (Blueprint $table) {
+        Schema::create('player_games', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('t1_id')->references('id')->on('teams');
-            $table->foreignId('t2_id')->references('id')->on('teams');
-            $table->foreignId('points_id')->references('id')->on('points');
             $table->foreignId('league_id')->references('id')->on('leagues');
-            $table->foreignId('home_team')->references('id')->on('teams');
+            $table->foreignId('player_id')->references('id')->on('players');
+            $table->foreignId('team_id')->references('id')->on('teams');
+            $table->foreignId('score_id')->references('id')->on('scores');
             $table->string('match_date');
             $table->timestamps();
         });
@@ -32,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('games');
+        Schema::dropIfExists('player_games');
     }
 };

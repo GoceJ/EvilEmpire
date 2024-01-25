@@ -23,7 +23,6 @@ class MatchExportController extends Controller
      */
     public function create()
     {
-        dd("HEREEE");
     }
 
     /**
@@ -34,9 +33,10 @@ class MatchExportController extends Controller
      */
     public function store(Request $request)
     {
-        // $users = trim($request->getContent());
-        // file_put_contents(__DIR__ . '../../../../dddd.json', $users);
+    }
 
+    public function storeTeam(Request $request)
+    {
         $new = [];
         $oldData = file_get_contents(__DIR__ . '../../../../database/data/teams.json');
         $users = ($request->getContent());
@@ -44,7 +44,26 @@ class MatchExportController extends Controller
         $new = (!empty($oldData) ?  $oldData . ',' : '' ) . $users;
         file_put_contents(__DIR__ . '../../../../database/data/teams.json', $new . PHP_EOL);
                 
-        echo json_encode(['200' => 'sucsess']);
+        echo json_encode(['200' => 'teamSaved']);
+    }
+
+    public function storePlayer(Request $request)
+    {
+        $new = [];
+        $oldData = file_get_contents(__DIR__ . '../../../../database/data/players.json');
+        $users = ($request->getContent());
+        
+        $new = (!empty($oldData) ?  $oldData . ',' : '' ) . $users;
+        file_put_contents(__DIR__ . '../../../../database/data/players.json', $new . PHP_EOL);
+                
+        echo json_encode(['200' => 'playerSaved']);
+    }
+
+    public function storeError(Request $request)
+    {
+        file_put_contents(__DIR__ . '../../../../database/data/logs/dataExtractError.txt', $request->getContent() . PHP_EOL, FILE_APPEND);
+                
+        echo json_encode(['200' => 'Basketball Error Saved']);
     }
 
     /**

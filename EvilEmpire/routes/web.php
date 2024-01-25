@@ -38,6 +38,10 @@ Route::group(['middleware' => 'auth'], function () {
 
 	// Match
 	Route::resource('/matchExportController', MatchExportController::class);
+	Route::post('/matchExportController/storePlayer', [MatchExportController::class, 'storePlayer'])->name('matchExportController.storePlayer');
+	Route::post('/matchExportController/storeTeam', [MatchExportController::class, 'storeTeam'])->name('matchExportController.storeTeam');
+	Route::post('/matchExportController/storeError', [MatchExportController::class, 'storeError'])->name('matchExportController.storeError');
+	
 });
 
 // Frameword user manager configuration routes - DONT TOUCH
