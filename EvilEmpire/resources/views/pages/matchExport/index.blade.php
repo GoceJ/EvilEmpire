@@ -194,6 +194,18 @@
                     // Get the date of the input 
                     let dateIndex = arr.indexOf('Избран датум') + 2;
                     let dateShow = arr[dateIndex];
+                    let currentSetDate = (dateShow).split("/")
+                    const f = Intl.DateTimeFormat('es-sp', {
+                        year:"numeric",
+                        month:'2-digit',
+                        day:'2-digit',
+                    })
+                    let day = parseInt(currentSetDate[0])
+                    let month = parseInt(currentSetDate[1])
+                    let year = parseInt(currentSetDate[2])
+                    let dateK = new Date(year + "/" + month + "/" + day) ;
+                    dateK.setDate(dateK.getDate() - 1);
+                    navigator.clipboard.writeText(f.format(dateK))
 
                     // Check if data is appeared or not
                     if(resultsIndex != -1 && (arr[dateIndex + 3] == 'ФУДБАЛ' || arr[dateIndex + 2] == 'ФУДБАЛ' || arr[dateIndex + 4] == 'ФУДБАЛ' || arr[dateIndex + 3] == 'КОШАРКА' || arr[dateIndex + 2] == 'КОШАРКА' || arr[dateIndex + 4] == 'КОШАРКА')){
@@ -377,6 +389,19 @@
                     // Get the date of the input 
                     let dateIndex = arr.indexOf('Избран датум') + 2;
                     let dateShow = arr[dateIndex];
+
+                    let currentSetDate = (dateShow).split("/")
+                    const f = Intl.DateTimeFormat('es-sp', {
+                        year:"numeric",
+                        month:'2-digit',
+                        day:'2-digit',
+                    })
+                    let day = parseInt(currentSetDate[0])
+                    let month = parseInt(currentSetDate[1])
+                    let year = parseInt(currentSetDate[2])
+                    let dateK = new Date(year + "/" + month + "/" + day) ;
+                    dateK.setDate(dateK.getDate() - 1);
+                    navigator.clipboard.writeText(f.format(dateK))
                         
                     // Check if data is appeared or not
                     if(resultsIndex != -1 && (arr[dateIndex + 3] == 'ФУДБАЛ' || arr[dateIndex + 2] == 'ФУДБАЛ' || arr[dateIndex + 4] == 'ФУДБАЛ' || arr[dateIndex + 3] == 'КОШАРКА' || arr[dateIndex + 2] == 'КОШАРКА' || arr[dateIndex + 4] == 'КОШАРКА')){
