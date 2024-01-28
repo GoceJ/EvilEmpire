@@ -69,6 +69,14 @@
         </a>
       </li>
 
+      {{-- Ajax Error Controller --}}
+      <li class="nav-item{{ $activePage == 'ajaxError' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('ajaxerror.index') }}">
+          @include('layouts.actions.icon', ['icon' => 'collections'])
+            <p>{{ __('Ajax Error') }}</p>
+        </a>
+      </li>
+
       {{-- Calendar --}}
       <li class="nav-item{{ $activePage == 'calendar' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('events.index') }}">

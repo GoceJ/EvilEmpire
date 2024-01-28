@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AjaxErrorController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
@@ -38,9 +39,12 @@ Route::group(['middleware' => 'auth'], function () {
 
 	// Match
 	Route::resource('/matchExportController', MatchExportController::class);
-	Route::post('/matchExportController/storePlayer', [MatchExportController::class, 'storePlayer'])->name('matchExportController.storePlayer');
-	Route::post('/matchExportController/storeTeam', [MatchExportController::class, 'storeTeam'])->name('matchExportController.storeTeam');
+	Route::resource('/ajaxerror', AjaxErrorController::class);
+	Route::post('/matchExportController/storeBasketballPlayer', [MatchExportController::class, 'storeBasketballPlayer'])->name('matchExportController.storeBasketballPlayer');
+	Route::post('/matchExportController/storeBasketballTeam', [MatchExportController::class, 'storeBasketballTeam'])->name('matchExportController.storeBasketballTeam');
+	Route::post('/matchExportController/storeFootballTeam', [MatchExportController::class, 'storeFootballTeam'])->name('matchExportController.storeFootballTeam');
 	Route::post('/matchExportController/storeError', [MatchExportController::class, 'storeError'])->name('matchExportController.storeError');
+	Route::post('/matchExportController/ajaxErrorDescription', [MatchExportController::class, 'ajaxErrorDescription'])->name('matchExportController.ajaxErrorDescription');
 	
 });
 
