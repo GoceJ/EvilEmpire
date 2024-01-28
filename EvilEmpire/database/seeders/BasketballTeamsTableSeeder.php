@@ -78,12 +78,12 @@ class BasketballTeamsTableSeeder extends Seeder
                     ]);
                 }
             } catch (\Throwable $th) {
-                file_put_contents('../database/data/logs/basketball_teams_error.txt', PHP_EOL . '~~~' .  now() . "~~~" . PHP_EOL . $th->getMessage() . PHP_EOL . json_encode($value) . PHP_EOL, FILE_APPEND);
+                file_put_contents(__DIR__ . '/../data/logs/basketball_teams_error.txt', PHP_EOL . '~~~' .  now() . "~~~" . PHP_EOL . $th->getMessage() . PHP_EOL . json_encode($value) . PHP_EOL, FILE_APPEND);
             }
         }
 
-        file_put_contents('../database/data/seeded_data/basketball_teams.json', $json . ',', FILE_APPEND);
-        file_put_contents('../database/data/basketball_teams.json', '');
-        file_put_contents('../database/data/logs/basketball_teams_seeded.txt', now() . PHP_EOL, FILE_APPEND);
+        file_put_contents(__DIR__ . '/../data/seeded_data/basketball_teams.json', $json . ',', FILE_APPEND);
+        file_put_contents(__DIR__ . '/../data/basketball_teams.json', '');
+        file_put_contents(__DIR__ . '/../data/logs/basketball_teams_seeded.txt', now() . PHP_EOL, FILE_APPEND);
     }
 }

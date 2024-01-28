@@ -74,12 +74,12 @@ class FootballTableSeeder extends Seeder
                     ]);
                 }
             } catch (\Throwable $th) {
-                file_put_contents('../database/data/logs/football_teams_error.txt', PHP_EOL . '~~~' .  now() . "~~~" . PHP_EOL . $th->getMessage() . PHP_EOL . json_encode($value) . PHP_EOL, FILE_APPEND);
+                file_put_contents(__DIR__ . '/../data/logs/football_teams_error.txt', PHP_EOL . '~~~' .  now() . "~~~" . PHP_EOL . $th->getMessage() . PHP_EOL . json_encode($value) . PHP_EOL, FILE_APPEND);
             }
         }
 
-        file_put_contents('../database/data/seeded_data/football_teams.json', $json . ',', FILE_APPEND);
-        file_put_contents('../database/data/football_teams.json', '');
-        file_put_contents('../database/data/logs/football_teams_seeded.txt', now() . PHP_EOL, FILE_APPEND);
+        file_put_contents(__DIR__ . '/../data/seeded_data/football_teams.json', $json . ',', FILE_APPEND);
+        file_put_contents(__DIR__ . '/../data/football_teams.json', '');
+        file_put_contents(__DIR__ . '/../data/logs/football_teams_seeded.txt', now() . PHP_EOL, FILE_APPEND);
     }
 }
