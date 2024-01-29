@@ -63,12 +63,16 @@ class MatchExportController extends Controller
         $data = ($request->getContent());
         
         $new = (strlen($oldData) > 1 ?  $oldData . ',' : '' ) . $data;
-        file_put_contents(__DIR__ . '../../../../database/data/basketball_players.json', $new . PHP_EOL);
+        file_put_contents(__DIR__ . '../../../../database/data/basketball_players.json', $new);
 
-        $timeStampData = $this->updateTimeStamp($data, 'player_import', true);
-        Artisan::call('db:seed',['--class' => 'BasketballPlayersTableSeeder']);
-
-        echo json_encode(['200' => 'Basketball Player Saved', 'data' => $timeStampData]);
+        if (strlen($new) > 0) {
+            $timeStampData = $this->updateTimeStamp($data, 'player_import', true);
+            Artisan::call('db:seed',['--class' => 'BasketballPlayersTableSeeder']);
+            
+            echo json_encode(['200' => 'Basketball Player Saved', 'data' => $timeStampData]);
+        } else {
+            echo json_encode(['200' => 'Basketball Player Saved', 'data' => TimeStamp::orderBy('id','DESC')->first()]);
+        }
     }
 
     public function storeFootballTeam(Request $request)

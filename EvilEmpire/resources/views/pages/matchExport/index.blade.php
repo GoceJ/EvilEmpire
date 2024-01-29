@@ -728,6 +728,7 @@
                     url: '{{ route("matchExportController.storeBasketballPlayer") }}',
                     data: jsonPlayer,
                     success: function (data) {
+                    console.log(data)
                         document.getElementById('basketball-player-update').innerHTML = '<i class="material-icons" style="color: green; font-weight: 800;">done</i>'
                         let data_player_import = data.data.player_import
                         let data_time_stamp = data.data.time_stamp
