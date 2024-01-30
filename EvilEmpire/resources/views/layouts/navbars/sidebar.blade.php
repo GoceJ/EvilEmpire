@@ -69,6 +69,14 @@
         </a>
       </li>
 
+      {{-- Bet Data Export Controller --}}
+      <li class="nav-item{{ $activePage == 'betDataExport' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('betDataExport.index') }}">
+          @include('layouts.actions.icon', ['icon' => 'collections'])
+            <p>{{ __('Bet Data Export') }}</p>
+        </a>
+      </li>
+
       {{-- Ajax Error Controller --}}
       <li class="nav-item{{ $activePage == 'ajaxError' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('ajaxerror.index') }}">
