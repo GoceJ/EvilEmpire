@@ -24,63 +24,36 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="table-responsive-sm">
-                                    <table class="table table-hover table-bordered">
-                                        <tbody>
-                                            <tr>
-                                                <td scope="col">#</td>
-                                                <td scope="col">First</td>
-                                                <td scope="col">Last</td>
-                                                <td scope="col">Last</td>
-                                                <td scope="col">Last</td>
-                                                <td scope="col">Last</td>
-                                                <td scope="col">Last</td>
-                                                <td scope="col">Last</td>
-                                                <td scope="col">Last</td>
-                                                <td scope="col">Last</td>
-                                                <td scope="col">Last</td>
-                                                <td scope="col">Last</td>
-                                                <td scope="col">Last</td>
-                                                <td scope="col">Last</td>
-                                                <td scope="col">Last</td>
-                                                <td scope="col">Last</td>
-                                                <td scope="col">Handle</td>
+                                    <table class="table table-hover table-bordered" style="font-size: 11px; text-align:center; border: 2px solid black; background-color: white;">
+                                        <tbody id="tbody">
+                                            <tr style="font-weight: 700;">
+                                                <td scope="col" colspan="0"></td>
+                                                <td scope="col" colspan="3">Конечен Тип</td>
+                                                <td scope="col" colspan="2">Двојна шанса</td>
+                                                <td scope="col" colspan="2">Полувреме/крај</td>
+                                                <td scope="col" colspan="3">Вкупно голови</td>
+                                                <td scope="col" colspan="2">ГГ/НГ Комб.</td>
+                                                <td scope="col" colspan="2">Тим</td>
+                                                <td scope="col" colspan="2">Комбинации</td>
                                             </tr>
-                                            <tr>
-                                                <th scope="row" rowspan="2">Darmstadt : B. Leverkusen</th>
-                                                <td>9.00</td>
-                                                <td>5.40</td>
-                                                <td>1.30</td>
-                                                <td>3.35</td>
-                                                <td>1.02</td>
-                                                <td>15.8</td>
-                                                <td>1.83</td>
-                                                <td>2.65</td>
-                                                <td>1.45</td>
-                                                <td>2.15</td>
-                                                <td>1.75</td>
-                                                <td>2.03</td>
-                                                <td>4.40</td>
-                                                <td>1.30</td>
-                                                <td>14.0</td>
-                                                <td>1.67</td>
-                                            </tr>
-                                            <tr>
-                                                <td>9.00</td>
-                                                <td>5.40</td>
-                                                <td>1.30</td>
-                                                <td>3.35</td>
-                                                <td>1.02</td>
-                                                <td>15.8</td>
-                                                <td>1.83</td>
-                                                <td>2.65</td>
-                                                <td>1.45</td>
-                                                <td>2.15</td>
-                                                <td>1.75</td>
-                                                <td>2.03</td>
-                                                <td>4.40</td>
-                                                <td>1.30</td>
-                                                <td>14.0</td>
-                                                <td>1.67</td>
+                                            <tr style="font-weight: 700;">
+                                                <td scope="col">Натпревар</td>
+                                                <td scope="col">1</td>
+                                                <td scope="col">X</td>
+                                                <td scope="col">2</td>
+                                                <td scope="col">1X</td>
+                                                <td scope="col">X2</td>
+                                                <td scope="col">1-1</td>
+                                                <td scope="col">2-2</td>
+                                                <td scope="col">0-2</td>
+                                                <td scope="col">3+</td>
+                                                <td scope="col">4+</td>
+                                                <td scope="col">ГГ</td>
+                                                <td scope="col">ГГ 3+</td>
+                                                <td scope="col">Т1 2+</td>
+                                                <td scope="col">Т2 2+</td>
+                                                <td scope="col">1&3+</td>
+                                                <td scope="col">2&3+</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -121,17 +94,19 @@
 
         let previousIndex = 0
         let dataSplit = []
-        for (let index = 0; index < tabIndexes.length; index++) {
-            let chank
-            if (previousIndex == 0) {
-                chank = arr.slice(previousIndex, tabIndexes[index] - 4)
-            } else {
-                chank = arr.slice(previousIndex + 1, tabIndexes[index] - 4)
+        if (tabIndexes.length != 0) {
+            for (let index = 0; index < tabIndexes.length; index++) {
+                let chank
+                if (previousIndex == 0) {
+                    chank = arr.slice(previousIndex, tabIndexes[index] - 4)
+                } else {
+                    chank = arr.slice(previousIndex + 1, tabIndexes[index] - 4)
+                }
+                previousIndex = tabIndexes[index]
+                dataSplit.push(chank)
             }
-            previousIndex = tabIndexes[index]
-            dataSplit.push(chank)
         }
-        dataSplit.push(arr.slice(previousIndex + 1, arr.indexOf('TИКЕТИ СО КОД')-1))
+        dataSplit.push(arr.slice(previousIndex + 1, arr.length))
         let data = dataMerger(dataSplit)
 
         return data
@@ -139,12 +114,39 @@
 
     function dataMerger(dataSplit) {
         let teamAndCoef = []
-        for (let i = 0; i < dataSplit.length; i += 3) {
-            for (let j = 3; j < dataSplit[i].length; j += 3) {
-                let match = [dataSplit[i][j-2], dataSplit[i][j-1]]
-                teamAndCoef.push(match)            
+        
+        if (dataSplit.length > 1) {
+            for (let i = 0; i < dataSplit.length; i++) {
+                if (dataSplit[i].length == 3) {
+                    let match = [dataSplit[i][1], dataSplit[i][2]]
+                    teamAndCoef.push(match)
+                    continue;
+                }
+                for (let j = 3; j < dataSplit[i].length; j += 3) {
+                    let match = [dataSplit[i][j-2], dataSplit[i][j-1]]
+
+                    teamAndCoef.push(match)
+                    if (j+3 > dataSplit[i].length - 1) {
+                        match = [dataSplit[i][j+1], dataSplit[i][j+2]]
+                        teamAndCoef.push(match)
+                    }
+                }
+            }
+        } else {
+            for (let j = 2; j < dataSplit[0].length; j += 3) {
+                let match = [dataSplit[0][j-2], dataSplit[0][j-1]]
+
+                teamAndCoef.push(match)
+                if (j+3 > dataSplit[0].length - 1) {
+                    match = [dataSplit[0][j+1], dataSplit[0][j+2]]
+                    teamAndCoef.push(match)
+                }
             }
         }
+
+        // let lastMatch = [dataSplit[i-3][dataSplit.length -1], dataSplit[i-3][dataSplit.length]]
+        // teamAndCoef.push(lastMatch)     
+        console.log(teamAndCoef)
 
         let data = []
         for (let i = 0; i < teamAndCoef.length; i++) {
