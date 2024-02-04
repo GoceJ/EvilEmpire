@@ -48,6 +48,16 @@ class BetDataExportController extends Controller
             }
         }
 
+        for ($i=0; $i < sizeof($games)-1; $i++) { 
+            for ($j= $i+1; $j < sizeof($games); $j++) { 
+                if ($games[$j]['points']['games'] > $games[$i]['points']['games']) {
+                    $temp = $games[$i];
+                    $games[$i] = $games[$j];
+                    $games[$j] = $temp;
+                }
+            }
+        }
+
         echo json_encode(['data' => $games]);
     }
 
