@@ -55,6 +55,8 @@
                                                 <td scope="col">1&3+</td>
                                                 <td scope="col">2&3+</td>
                                             </tr>
+                                            {{-- asdas --}}
+                                            
                                         </tbody>
                                     </table>
                                 </div>
@@ -79,6 +81,7 @@
         })
     })
 
+    // Crop only the result table data
     function dataParser() {
         let textArea = document.getElementById('football').value
 
@@ -112,6 +115,7 @@
         return data
     }
 
+    // Parse JSON object data for the teams: names, coef
     function dataMerger(dataSplit) {
         let teamAndCoef = []
         
@@ -143,10 +147,6 @@
                 }
             }
         }
-
-        // let lastMatch = [dataSplit[i-3][dataSplit.length -1], dataSplit[i-3][dataSplit.length]]
-        // teamAndCoef.push(lastMatch)     
-        console.log(teamAndCoef)
 
         let data = []
         for (let i = 0; i < teamAndCoef.length; i++) {
@@ -180,6 +180,7 @@
         return data
     }
 
+    // Send data to backend and get results
     async function dataProcessing(onlyResults, le) {
             let footballResults = onlyResults;
             
@@ -192,10 +193,43 @@
                 data: jsonData,
                     success: function (data) {
                         console.log(data)
+                        // id tbody
+                        // console.log(data.data);
+                        data.data.forEach(element => {
+                            let tbody = document.getElementById('tbody')
+                            let gamesCountTr = document.createElement('tr')
+                            gamesCountTr.innerHTML = '<td style="font-weight: 700;" scope="col" rowspan="2">' + element.team1 + ' : ' + element.team2 + '<br>' + 'Games: ' + element.points.games + '</td><td scope="col">' + element.points['1'] + '</td><td scope="col">' + element.points['X'] + '</td><td scope="col">' + element.points['2'] + '</td><td scope="col">' + element.points['1X'] + '</td><td scope="col">' + element.points['2X'] + '</td><td scope="col">' + element.points['1-1'] + '</td><td scope="col">' + element.points['2-2'] + '</td><td scope="col">' + element.points['0-2'] + '</td><td scope="col">' + element.points['3+'] + '</td><td scope="col">' + element.points['4+'] + '</td><td scope="col">' + element.points['GG'] + '</td><td scope="col">' + element.points['GG3+'] + '</td><td scope="col">' + element.points['T12+'] + '</td><td scope="col">' + element.points['T22+'] + '</td><td scope="col">' + element.points['1&3+'] + '</td><td scope="col">' + element.points['2&3+'] + '</td>'
+
+                            let winPercentage = document.createElement('tr')
+                            winPercentage.innerHTML = 
+                                trColoring(element, '1') + 
+                                trColoring(element, 'X') + 
+                                trColoring(element, '2') + 
+                                trColoring(element, '1X') + 
+                                trColoring(element, '2X') + 
+                                trColoring(element, '1-1') + 
+                                trColoring(element, '2-2') + 
+                                trColoring(element, '0-2') + 
+                                trColoring(element, '3+') + 
+                                trColoring(element, '4+') + 
+                                trColoring(element, 'GG') + 
+                                trColoring(element, 'GG3+') + 
+                                trColoring(element, 'T12+') + 
+                                trColoring(element, 'T22+') + 
+                                trColoring(element, '1&3+') + 
+                                trColoring(element, '2&3+')
+
+                            tbody.append(gamesCountTr, winPercentage)
+                        });
+
+                        
+
+
                             // let newRow = document.getElementById('div-data')
                             // let tr = document.createElement('tr')
                             // tr.innerHTML = '<th scope="row" class="id">' + data.data.id + '</th><td class="time_stamp">' + data.data.time_stamp + '</td><td class="basket_import">' + (data.data.basket_import ? '<i class="material-icons" style="color: green; font-weight: 800;">done</i>' : '<i class="material-icons" style="color: coral; font-weight: 800;">close</i>') + '</td><td class="player_import">' + (data.data.player_import ? '<i class="material-icons" style="color: green; font-weight: 800;">done</i>' : '<i class="material-icons" style="color: coral; font-weight: 800;">close</i>') + '</td><td class="football_import">' + (data.data.football_import ? '<i class="material-icons" style="color: green; font-weight: 800;">done</i>' : '<i class="material-icons" style="color: coral; font-weight: 800;">close</i>') + '</td><td class="basket_error">' + (data.data.basket_error ? '<i class="material-icons" style="color: red;">error</i>' : '<i class="material-icons" style="color: coral; font-weight: 800;">close</i>') + '</td><td class="player_error">' + (data.data.player_error ? '<i class="material-icons" style="color: red;">error</i>' : '<i class="material-icons" style="color: coral; font-weight: 800;">close</i>') + '</td><td class="football_error">' + (data.data.football_error ? '<i class="material-icons" style="color: red;">error</i>' : '<i class="material-icons" style="color: coral; font-weight: 800;">close</i>') + '</td>'
                             // newRow.prepend(tr)
+
 
                     },
                     error: function (xhr, ajaxOptions, thrownError) {
@@ -206,6 +240,15 @@
                     'X-CSRF-Token': '{{ csrf_token() }}',
                 }
             });
+
+            function trColoring(element, col) {
+                let perc = parseInt((element.points[col] * 100) / element.points.games )
+                let near = (perc >= 50 && perc < 80) ? 'style="background-color: antiquewhite;font-weight: 700;"' : ''
+                let color = perc >= 80 ? 'style="background-color: yellowgreen;font-weight: 900;"' : near
+                let row = '<td scope="col" ' + color + '>' + perc + '%</td>'
+                
+                return row
+            }
     }
 </script>
 
