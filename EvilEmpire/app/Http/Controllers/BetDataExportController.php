@@ -23,7 +23,9 @@ class BetDataExportController extends Controller
         foreach ($data as $value) {
             $data = $this->forData($value->team1, $value->team2);
             // $reverse = $this->forData($value->team2, $value->team1);
-            array_merge($games, $data);
+            if ($data) {
+                array_merge($games, $data);
+            }
         }
 
         for ($i = 0; $i < sizeof($games) - 1; $i++) {
@@ -45,7 +47,7 @@ class BetDataExportController extends Controller
         $t2 = FootballTeam::where('name', $t2n)->get();
 
         if (sizeof($t1) == 0 || sizeof($t2) == 0) {
-            return;
+            return false;
         } else {
             $t1Id = $t1[0]->id;
             $t2Id = $t2[0]->id;
@@ -57,7 +59,7 @@ class BetDataExportController extends Controller
         ])->get();
 
         if (sizeof($gamesData) == 0) {
-            return;
+            return false;
         } else {
             $check = [
                 'team1' => $gamesData[0]->t1name->name,
