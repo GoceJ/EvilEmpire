@@ -48,6 +48,32 @@ class BetDataExportController extends Controller
                         ];
                         array_push($games, $check);
                     }
+                } else {
+                    $t2 = FootballTeam::where('name', $value->team1)->get();
+                    $t1 = FootballTeam::where('name', $value->team2)->get();
+
+                    if (sizeof($t1) == 0 || sizeof($t2) == 0) {
+                        continue;
+                    } else {
+                        $t1Id = $t1[0]->id;
+                        $t2Id = $t2[0]->id;
+                    }
+
+                    $gamesData = FootballGame::where([
+                        ['t1_id', '=', $t1Id],
+                        ['t2_id', '=', $t2Id]
+                    ])->get();
+
+                    if (sizeof($gamesData) == 0) {
+                        continue;
+                    } else {
+                        $check = [
+                            'team1' => $gamesData[0]->t1name->name,
+                            'team2' => $gamesData[0]->t2name->name,
+                            'points' => $this->finalTip($gamesData)
+                        ];
+                        array_push($games, $check);
+                    }
                 }
             }
         }
