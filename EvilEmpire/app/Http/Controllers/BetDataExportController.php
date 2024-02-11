@@ -104,7 +104,8 @@ class BetDataExportController extends Controller
             // 1-X 2-X
             if ($playedGames->points->t1_total >= $playedGames->points->t2_total) {
                 $t1orX = $t1orX + 1;
-            } else if ($playedGames->points->t2_total >= $playedGames->points->t1_total) {
+            }
+            if ($playedGames->points->t2_total >= $playedGames->points->t1_total) {
                 $t2orX = $t2orX + 1;
             }
 

@@ -36,7 +36,7 @@
                                                 <td scope="col" colspan="2">Тим</td>
                                                 <td scope="col" colspan="2">Комбинации</td>
                                             </tr>
-                                            <tr style="font-weight: 700;">
+                                            <tr style="font-weight: 700; position: sticky; top:0px; background: white; z-index: 10;">
                                                 <td scope="col">Натпревар</td>
                                                 <td scope="col">1</td>
                                                 <td scope="col">X</td>
@@ -198,7 +198,7 @@
                         data.data.forEach(element => {
                             let tbody = document.getElementById('tbody')
                             let gamesCountTr = document.createElement('tr')
-                            gamesCountTr.innerHTML = '<td style="font-weight: 700;" scope="col" rowspan="2">' + element.team1 + ' : ' + element.team2 + '<br>' + 'Games: ' + element.points.games + '</td><td scope="col">' + element.points['1'] + '</td><td scope="col">' + element.points['X'] + '</td><td scope="col">' + element.points['2'] + '</td><td scope="col">' + element.points['1X'] + '</td><td scope="col">' + element.points['2X'] + '</td><td scope="col">' + element.points['1-1'] + '</td><td scope="col">' + element.points['2-2'] + '</td><td scope="col">' + element.points['0-2'] + '</td><td scope="col">' + element.points['3+'] + '</td><td scope="col">' + element.points['4+'] + '</td><td scope="col">' + element.points['GG'] + '</td><td scope="col">' + element.points['GG3+'] + '</td><td scope="col">' + element.points['T12+'] + '</td><td scope="col">' + element.points['T22+'] + '</td><td scope="col">' + element.points['1&3+'] + '</td><td scope="col">' + element.points['2&3+'] + '</td>'
+                            gamesCountTr.innerHTML = '<td style="font-weight: 700;" scope="col" rowspan="2">' + element.team1 + ' v ' + element.team2 + '<br>' + 'Games: ' + element.points.games + '</td><td scope="col">' + element.points['1'] + '</td><td scope="col">' + element.points['X'] + '</td><td scope="col">' + element.points['2'] + '</td><td scope="col">' + element.points['1X'] + '</td><td scope="col">' + element.points['2X'] + '</td><td scope="col">' + element.points['1-1'] + '</td><td scope="col">' + element.points['2-2'] + '</td><td scope="col">' + element.points['0-2'] + '</td><td scope="col">' + element.points['3+'] + '</td><td scope="col">' + element.points['4+'] + '</td><td scope="col">' + element.points['GG'] + '</td><td scope="col">' + element.points['GG3+'] + '</td><td scope="col">' + element.points['T12+'] + '</td><td scope="col">' + element.points['T22+'] + '</td><td scope="col">' + element.points['1&3+'] + '</td><td scope="col">' + element.points['2&3+'] + '</td>'
 
                             let winPercentage = document.createElement('tr')
                             winPercentage.innerHTML = 
