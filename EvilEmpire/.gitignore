@@ -13,3 +13,15 @@ yarn-error.log
 /.idea
 /.vscode
 /database/data/
+/database/data
+/database/data/basketball_teams.json
+/database/data/logs/basketball_players_seeded.txt
+/database/data/basketball_teams.json
+/database/data/logs/basketball_players_seeded.txt
+/database/data/logs/basketball_teams_seeded.txt
+/database/data/logs/dataExtractError.txt
+/database/data/logs/dataExtractError.txt
+/database/data/logs/football_teams_seeded.txt
+/database/data/seeded_data/basketball_players.json
+/database/data/seeded_data/basketball_teams.json
+/database/data/seeded_data/football_teams.json

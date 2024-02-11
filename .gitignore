@@ -1,1 +1,13 @@
 .autogit
+/EvilEmpire/database/data
+EvilEmpire/database/data/basketball_teams.json
+EvilEmpire/database/data/logs/basketball_players_seeded.txt
+EvilEmpire/database/data/basketball_teams.json
+EvilEmpire/database/data/logs/basketball_players_seeded.txt
+EvilEmpire/database/data/logs/basketball_teams_seeded.txt
+EvilEmpire/database/data/logs/dataExtractError.txt
+EvilEmpire/database/data/logs/dataExtractError.txt
+EvilEmpire/database/data/logs/football_teams_seeded.txt
+EvilEmpire/database/data/seeded_data/basketball_players.json
+EvilEmpire/database/data/seeded_data/basketball_teams.json
+EvilEmpire/database/data/seeded_data/football_teams.json
