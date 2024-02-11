@@ -17,64 +17,41 @@ class BetDataExportController extends Controller
 
     public function dataCompare(Request $request)
     {
+        return json_encode(['data' => 'asd']);
+ 
         $data = json_decode($request->getContent());
 
         $games = [];
         foreach ($data as $value) {
-            for ($i=1; $i <= 2 ; $i++) { 
-                if ($i == 1) {
-                    $t1 = FootballTeam::where('name', $value->team1)->get();
-                    $t2 = FootballTeam::where('name', $value->team2)->get();
+            $t1 = FootballTeam::where('name', $value->team1)->get();
+            $t2 = FootballTeam::where('name', $value->team2)->get();
 
-                    if (sizeof($t1) == 0 || sizeof($t2) == 0) {
-                        continue;
-                    } else {
-                        $t1Id = $t1[0]->id;
-                        $t2Id = $t2[0]->id;
-                    }
+            if (sizeof($t1) == 0 || sizeof($t2) == 0) {
+                continue;
+            } else {
+                $t1Id = $t1[0]->id;
+                $t2Id = $t2[0]->id;
+            }
 
-                    $gamesData = FootballGame::where([
-                        ['t1_id', '=', $t1Id],
-                        ['t2_id', '=', $t2Id]
-                    ])->get();
+            $gamesData = FootballGame::where([
+                ['t1_id', '=', $t1Id],
+                ['t2_id', '=', $t2Id]
+            ])->get();
 
-                    if (sizeof($gamesData) == 0) {
-                        continue;
-                    } else {
-                        $check = [
-                            'team1' => $gamesData[0]->t1name->name,
-                            'team2' => $gamesData[0]->t2name->name,
-                            'points' => $this->finalTip($gamesData)
-                        ];
-                        array_push($games, $check);
-                    }
-                } else {
-                    $t2 = FootballTeam::where('name', $value->team1)->get();
-                    $t1 = FootballTeam::where('name', $value->team2)->get();
+            $reversed = FootballGame::where([
+                ['t1_id', '=', $t2Id],
+                ['t2_id', '=', $t1Id]
+            ])->get();
 
-                    if (sizeof($t1) == 0 || sizeof($t2) == 0) {
-                        continue;
-                    } else {
-                        $t1Id = $t1[0]->id;
-                        $t2Id = $t2[0]->id;
-                    }
-
-                    $gamesData = FootballGame::where([
-                        ['t1_id', '=', $t1Id],
-                        ['t2_id', '=', $t2Id]
-                    ])->get();
-
-                    if (sizeof($gamesData) == 0) {
-                        continue;
-                    } else {
-                        $check = [
-                            'team1' => $gamesData[0]->t2name->name,
-                            'team2' => $gamesData[0]->t1name->name,
-                            'points' => $this->finalTip($gamesData)
-                        ];
-                        array_push($games, $check);
-                    }
-                }
+            if (sizeof($gamesData) == 0) {
+                continue;
+            } else {
+                $check = [
+                    'team1' => $gamesData[0]->t1name->name,
+                    'team2' => $gamesData[0]->t2name->name,
+                    'points' => $this->finalTip($gamesData, $reversed)
+                ];
+                array_push($games, $check);
             }
         }
 
@@ -91,7 +68,7 @@ class BetDataExportController extends Controller
         return json_encode(['data' => $games]);
     }
 
-    private function finalTip($matches) {
+    private function finalTip($matches, $reversed) {
         $team1wins = 0;
         $draws = 0;
         $team2wins = 0;
@@ -117,6 +94,92 @@ class BetDataExportController extends Controller
 
         $gamesCounter = 0;
         foreach ($matches as $playedGames) {
+            if ($playedGames->points->t1_total == '' || $playedGames->points->t2_total == '') {
+                continue;
+            }
+
+            $gamesCounter++;
+            // 1 X 2
+            if ($playedGames->points->t1_total > $playedGames->points->t2_total) {
+                $team1wins = $team1wins + 1;
+            } else if ($playedGames->points->t1_total == $playedGames->points->t2_total) {
+                $draws = $draws + 1;
+            } else if ($playedGames->points->t2_total > $playedGames->points->t1_total) {
+                $team2wins = $team2wins + 1;
+            }
+
+            // 1-X 2-X
+            if ($playedGames->points->t1_total >= $playedGames->points->t2_total) {
+                $t1orX = $t1orX + 1;
+            }
+            if ($playedGames->points->t2_total >= $playedGames->points->t1_total) {
+                $t2orX = $t2orX + 1;
+            }
+
+            // 1-1 2-2
+            if (
+                $playedGames->points->t1_total > $playedGames->points->t2_total
+                && $playedGames->points->t1_1half > $playedGames->points->t2_1half
+            ) {
+                $t1t1 = $t1t1 + 1;
+            } else if (
+                $playedGames->points->t1_total < $playedGames->points->t2_total
+                && $playedGames->points->t1_1half < $playedGames->points->t2_1half
+            ) {
+                $t2t2 = $t2t2 + 1;
+            }
+
+            // 0-2	3+	4+
+            $totalPoints = $playedGames->points->t1_total + $playedGames->points->t2_total;
+            if ($totalPoints >= 0 && $totalPoints <= 2) {
+                $totalScore0_2 = $totalScore0_2 + 1;
+            } 
+            if ($totalPoints >= 3) {
+                $totalScore3x = $totalScore3x + 1;
+            }
+            if ($totalPoints >= 4) {
+                $totalScore4x = $totalScore4x + 1;
+            }
+
+            // ГГ	ГГ 3+	
+            if (
+                $playedGames->points->t1_total > 0
+                && $playedGames->points->t2_total > 0
+            ) {
+                $scorescore = $scorescore + 1;
+            } 
+            if (
+                $playedGames->points->t1_total > 0
+                && $playedGames->points->t2_total > 0
+                && $totalPoints >= 3
+            ) {
+                $scorescore3x = $scorescore3x + 1;
+            } 
+
+            // Т1 2+	Т2 2+	
+            if (
+                $playedGames->points->t1_total >= 2
+            ) {
+                $t12x = $t12x + 1;
+            } else if ($playedGames->points->t2_total >= 2) {
+                $t22x = $t22x + 1;
+            }
+
+            // 1&3+	2&3+
+            if (
+                $playedGames->points->t1_total > $playedGames->points->t2_total
+                && $totalPoints >= 3
+            ) {
+                $t1and3x = $t1and3x + 1;
+            } else if (
+                $playedGames->points->t1_total < $playedGames->points->t2_total
+                && $totalPoints >= 3
+            ) {
+                $t2and3x = $t2and3x + 1;
+            }
+        }
+
+        foreach ($reversed as $playedGames) {
             if ($playedGames->points->t1_total == '' || $playedGames->points->t2_total == '') {
                 continue;
             }
