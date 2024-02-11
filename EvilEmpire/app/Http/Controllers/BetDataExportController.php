@@ -17,6 +17,8 @@ class BetDataExportController extends Controller
 
     public function dataCompare(Request $request)
     {
+        return json_encode(['data' => 'asd']);
+ 
         $data = json_decode($request->getContent());
 
         $games = [];
