@@ -21,35 +21,13 @@ class BetDataExportController extends Controller
 
         $games = [];
         foreach ($data as $value) {
-            $t2 = FootballTeam::where('name', $value->team1)->get();
-            $t1 = FootballTeam::where('name', $value->team2)->get();
-
-            if (sizeof($t1) == 0 || sizeof($t2) == 0) {
-                continue;
-            } else {
-                $t1Id = $t1[0]->id;
-                $t2Id = $t2[0]->id;
-            }
-
-            $gamesData = FootballGame::where([
-                ['t1_id', '=', $t1Id],
-                ['t2_id', '=', $t2Id]
-            ])->get();
-
-            if (sizeof($gamesData) == 0) {
-                continue;
-            } else {
-                $check = [
-                    'team1' => $gamesData[0]->t1name->name,
-                    'team2' => $gamesData[0]->t2name->name,
-                    'points' => $this->finalTip($gamesData)
-                ];
-                array_push($games, $check);
-            }
+            $data = $this->forData($value->team1, $value->team2);
+            // $reverse = $this->forData($value->team2, $value->team1);
+            array_merge($games, $data);
         }
 
-        for ($i=0; $i < sizeof($games)-1; $i++) { 
-            for ($j= $i+1; $j < sizeof($games); $j++) { 
+        for ($i = 0; $i < sizeof($games) - 1; $i++) {
+            for ($j = $i + 1; $j < sizeof($games); $j++) {
                 if ($games[$j]['points']['games'] > $games[$i]['points']['games']) {
                     $temp = $games[$i];
                     $games[$i] = $games[$j];
@@ -61,7 +39,37 @@ class BetDataExportController extends Controller
         return json_encode(['data' => $games]);
     }
 
-    private function finalTip($matches) {
+    private function forData($t1n, $t2n)
+    {
+        $t1 = FootballTeam::where('name', $t1n)->get();
+        $t2 = FootballTeam::where('name', $t2n)->get();
+
+        if (sizeof($t1) == 0 || sizeof($t2) == 0) {
+            return;
+        } else {
+            $t1Id = $t1[0]->id;
+            $t2Id = $t2[0]->id;
+        }
+
+        $gamesData = FootballGame::where([
+            ['t1_id', '=', $t1Id],
+            ['t2_id', '=', $t2Id]
+        ])->get();
+
+        if (sizeof($gamesData) == 0) {
+            return;
+        } else {
+            $check = [
+                'team1' => $gamesData[0]->t1name->name,
+                'team2' => $gamesData[0]->t2name->name,
+                'points' => $this->finalTip($gamesData)
+            ];
+            return $check;
+        }
+    }
+
+    private function finalTip($matches)
+    {
         $team1wins = 0;
         $draws = 0;
         $team2wins = 0;
@@ -126,7 +134,7 @@ class BetDataExportController extends Controller
             $totalPoints = $playedGames->points->t1_total + $playedGames->points->t2_total;
             if ($totalPoints >= 0 && $totalPoints <= 2) {
                 $totalScore0_2 = $totalScore0_2 + 1;
-            } 
+            }
             if ($totalPoints >= 3) {
                 $totalScore3x = $totalScore3x + 1;
             }
@@ -140,14 +148,14 @@ class BetDataExportController extends Controller
                 && $playedGames->points->t2_total > 0
             ) {
                 $scorescore = $scorescore + 1;
-            } 
+            }
             if (
                 $playedGames->points->t1_total > 0
                 && $playedGames->points->t2_total > 0
                 && $totalPoints >= 3
             ) {
                 $scorescore3x = $scorescore3x + 1;
-            } 
+            }
 
             // Т1 2+	Т2 2+	
             if (
@@ -176,20 +184,20 @@ class BetDataExportController extends Controller
             '1' => $team1wins,
             'X' => $draws,
             '2' => $team2wins,
-            '1X' =>$t1orX,
-            '2X' =>$t2orX,
-            '1-1' =>$t1t1,
-            '2-2' =>$t2t2,
-            '0-2' =>$totalScore0_2,
-            '3+' =>$totalScore3x,
-            '4+' =>$totalScore4x,
-            'GG' =>$scorescore,
-            'GG3+' =>$scorescore3x,
-            'T12+' =>$t12x,
-            'T22+' =>$t22x,
-            '1&3+' =>$t1and3x,
-            '2&3+' =>$t2and3x,
-            'games' =>$gamesCounter
+            '1X' => $t1orX,
+            '2X' => $t2orX,
+            '1-1' => $t1t1,
+            '2-2' => $t2t2,
+            '0-2' => $totalScore0_2,
+            '3+' => $totalScore3x,
+            '4+' => $totalScore4x,
+            'GG' => $scorescore,
+            'GG3+' => $scorescore3x,
+            'T12+' => $t12x,
+            'T22+' => $t22x,
+            '1&3+' => $t1and3x,
+            '2&3+' => $t2and3x,
+            'games' => $gamesCounter
         ];
     }
 
