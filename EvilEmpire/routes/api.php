@@ -32,6 +32,6 @@ Route::get('posts', [PostController::class, 'index']);
 Route::post('posts', [PostController::class, 'store']);
 
 
-// Calendar API - DONT TOUCH
+// Calendar API - DONT TOUCHf
 Route::get('events', [EventController::class, 'index'])->name('api.events.index');
 Route::get('events/by-month', [EventController::class, 'getEventsByMonth'])->name('api.events.byMonth');
