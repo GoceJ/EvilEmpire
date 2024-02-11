@@ -19,6 +19,11 @@ use App\Http\Controllers\Api\EventController;
 |
 */
 
+Route::group(['middleware' => 'cors'], function () {
+    Route::get('football/teamCompare', [BetDataExportController::class, 'apiTeamCompareResponse'])->name('api.football.teamCompare');
+
+});
+
 // Packet Users API - DONT TOUCH
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
@@ -29,7 +34,6 @@ Route::post('users', [UserController::class, 'store']);
 Route::get('posts', [PostController::class, 'index']);
 Route::post('posts', [PostController::class, 'store']);
 
-Route::get('football/teamCompare', [BetDataExportController::class, 'apiTeamCompareResponse'])->name('api.football.teamCompare');
 
 // Calendar API - DONT TOUCH
 Route::get('events', [EventController::class, 'index'])->name('api.events.index');
