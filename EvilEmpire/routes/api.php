@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\FootballController;
+use App\Http\Controllers\BetDataExportController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\PostController;
@@ -26,6 +28,8 @@ Route::get('users', [UserController::class, 'index']);
 Route::post('users', [UserController::class, 'store']);
 Route::get('posts', [PostController::class, 'index']);
 Route::post('posts', [PostController::class, 'store']);
+
+Route::get('football/teamCompare', [BetDataExportController::class, 'apiTeamCompareResponse'])->name('api.football.teamCompare');
 
 // Calendar API - DONT TOUCH
 Route::get('events', [EventController::class, 'index'])->name('api.events.index');
