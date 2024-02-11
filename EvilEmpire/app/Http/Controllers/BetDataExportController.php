@@ -68,8 +68,8 @@ class BetDataExportController extends Controller
                         continue;
                     } else {
                         $check = [
-                            'team1' => $gamesData[0]->t1name->name,
-                            'team2' => $gamesData[0]->t2name->name,
+                            'team1' => $gamesData[0]->t2name->name,
+                            'team2' => $gamesData[0]->t1name->name,
                             'points' => $this->finalTip($gamesData)
                         ];
                         array_push($games, $check);
