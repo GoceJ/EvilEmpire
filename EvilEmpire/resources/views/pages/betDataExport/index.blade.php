@@ -25,7 +25,7 @@
                             <div class="col-md-12">
                                 <div class="table-responsive-sm">
                                     <table class="table table-hover table-bordered" style="font-size: 11px; text-align:center; border: 2px solid black; background-color: white;">
-                                        <tbody id="tbody">
+                                        <tbody id="tbody" style=" border: 3px solid blueviolet; ">
                                             <tr style="font-weight: 700;">
                                                 <td scope="col" colspan="0"></td>
                                                 <td scope="col" colspan="3">Конечен Тип</td>
@@ -55,8 +55,6 @@
                                                 <td scope="col">1&3+</td>
                                                 <td scope="col">2&3+</td>
                                             </tr>
-                                            {{-- asdas --}}
-                                            
                                         </tbody>
                                     </table>
                                 </div>
@@ -118,7 +116,7 @@
     // Parse JSON object data for the teams: names, coef
     function dataMerger(dataSplit) {
         let teamAndCoef = []
-        
+
         if (dataSplit.length > 1) {
             for (let i = 0; i < dataSplit.length; i++) {
                 if (dataSplit[i].length == 3) {
@@ -180,6 +178,12 @@
         return data
     }
 
+    // copy to clipboard
+    function testFunction(val) {
+        let clean = val.replace('.', '')
+        navigator.clipboard.writeText(clean)
+    }
+
     // Send data to backend and get results
     async function dataProcessing(onlyResults, le) {
             let footballResults = onlyResults;
@@ -195,11 +199,17 @@
                     success: function (data) {
                         data.data.forEach(element => {
                             let tbody = document.getElementById('tbody')
-                            let gamesCountTr = document.createElement('tr')
-                            gamesCountTr.innerHTML = '<td style="font-weight: 700;" scope="col" rowspan="2">' + element.team1 + ' v ' + element.team2 + '<br>' + 'Games: ' + element.points.games + '</td><td scope="col">' + element.points['1'] + '</td><td scope="col">' + element.points['X'] + '</td><td scope="col">' + element.points['2'] + '</td><td scope="col">' + element.points['1X'] + '</td><td scope="col">' + element.points['2X'] + '</td><td scope="col">' + element.points['1-1'] + '</td><td scope="col">' + element.points['2-2'] + '</td><td scope="col">' + element.points['0-2'] + '</td><td scope="col">' + element.points['3+'] + '</td><td scope="col">' + element.points['4+'] + '</td><td scope="col">' + element.points['GG'] + '</td><td scope="col">' + element.points['GG3+'] + '</td><td scope="col">' + element.points['T12+'] + '</td><td scope="col">' + element.points['T22+'] + '</td><td scope="col">' + element.points['1&3+'] + '</td><td scope="col">' + element.points['2&3+'] + '</td>'
+                            let gamesCountTr1 = document.createElement('tr')
+                            gamesCountTr1.style = 'border-top: 3px solid blueviolet !important;'
+                            gamesCountTr1.innerHTML = '<td style="font-weight: 700;" scope="col" rowspan="4"><button onClick="testFunction(\'' + element.team1 + ' v ' + element.team2 + '\')" class="btn btn-primary" style="width: 100%; height: 150px;">' + element.team1 + ' v ' + element.team2 + '<br>' + 'Games: ' + element.points.games + ' : ' + element.pointsTotal.games + '</button></td><td scope="col">' + element.points['1'] + '</td><td scope="col">' + element.points['X'] + '</td><td scope="col">' + element.points['2'] + '</td><td scope="col">' + element.points['1X'] + '</td><td scope="col">' + element.points['2X'] + '</td><td scope="col">' + element.points['1-1'] + '</td><td scope="col">' + element.points['2-2'] + '</td><td scope="col">' + element.points['0-2'] + '</td><td scope="col">' + element.points['3+'] + '</td><td scope="col">' + element.points['4+'] + '</td><td scope="col">' + element.points['GG'] + '</td><td scope="col">' + element.points['GG3+'] + '</td><td scope="col">' + element.points['T12+'] + '</td><td scope="col">' + element.points['T22+'] + '</td><td scope="col">' + element.points['1&3+'] + '</td><td scope="col">' + element.points['2&3+'] + '</td>'
 
-                            let winPercentage = document.createElement('tr')
-                            winPercentage.innerHTML = 
+                            let gamesCountTr2 = document.createElement('tr')
+                            gamesCountTr2.style = 'border-top: 3px solid aqua !important;'
+                            gamesCountTr2.innerHTML = '<td scope="col">' + element.pointsTotal['1'] + '</td><td scope="col">' + element.pointsTotal['X'] + '</td><td scope="col">' + element.pointsTotal['2'] + '</td><td scope="col">' + element.pointsTotal['1X'] + '</td><td scope="col">' + element.pointsTotal['2X'] + '</td><td scope="col">' + element.pointsTotal['1-1'] + '</td><td scope="col">' + element.pointsTotal['2-2'] + '</td><td scope="col">' + element.pointsTotal['0-2'] + '</td><td scope="col">' + element.pointsTotal['3+'] + '</td><td scope="col">' + element.pointsTotal['4+'] + '</td><td scope="col">' + element.pointsTotal['GG'] + '</td><td scope="col">' + element.pointsTotal['GG3+'] + '</td><td scope="col">' + element.pointsTotal['T12+'] + '</td><td scope="col">' + element.pointsTotal['T22+'] + '</td><td scope="col">' + element.pointsTotal['1&3+'] + '</td><td scope="col">' + element.pointsTotal['2&3+'] + '</td>'
+
+                            let winPercentage1 = document.createElement('tr')
+                            let winPercentage2 = document.createElement('tr')
+                            winPercentage1.innerHTML = 
                                 trColoring(element, '1') + 
                                 trColoring(element, 'X') + 
                                 trColoring(element, '2') + 
@@ -216,8 +226,26 @@
                                 trColoring(element, 'T22+') + 
                                 trColoring(element, '1&3+') + 
                                 trColoring(element, '2&3+')
+                            winPercentage2.innerHTML = 
+                                trColoring(element, '1', true) + 
+                                trColoring(element, 'X', true) + 
+                                trColoring(element, '2', true) + 
+                                trColoring(element, '1X', true) + 
+                                trColoring(element, '2X', true) + 
+                                trColoring(element, '1-1', true) + 
+                                trColoring(element, '2-2', true) + 
+                                trColoring(element, '0-2', true) + 
+                                trColoring(element, '3+', true) + 
+                                trColoring(element, '4+', true) + 
+                                trColoring(element, 'GG', true) + 
+                                trColoring(element, 'GG3+', true) + 
+                                trColoring(element, 'T12+', true) + 
+                                trColoring(element, 'T22+', true) + 
+                                trColoring(element, '1&3+', true) + 
+                                trColoring(element, '2&3+', true)
 
-                            tbody.append(gamesCountTr, winPercentage)
+
+                            tbody.append(gamesCountTr1, winPercentage1, gamesCountTr2, winPercentage2)
                         });
                             // let newRow = document.getElementById('div-data')
                             // let tr = document.createElement('tr')
@@ -232,8 +260,16 @@
                 // }
             });
 
-            function trColoring(element, col) {
-                let perc = parseInt((element.points[col] * 100) / element.points.games )
+            
+
+            function trColoring(element, col, $total = false) {
+                let perc
+                if ($total) {
+                    perc = parseInt((element.pointsTotal[col] * 100) / element.pointsTotal.games )
+                } else {
+                    perc = parseInt((element.points[col] * 100) / element.points.games )
+                }
+
                 let near = (perc >= 50 && perc < 80) ? 'style="background-color: antiquewhite;font-weight: 700;"' : ''
                 let color = perc >= 80 ? 'style="background-color: yellowgreen;font-weight: 900;"' : near
                 let row = '<td scope="col" ' + color + '>' + perc + '%</td>'
