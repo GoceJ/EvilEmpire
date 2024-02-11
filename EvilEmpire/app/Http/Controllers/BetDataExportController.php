@@ -21,8 +21,8 @@ class BetDataExportController extends Controller
 
         $games = [];
         foreach ($data as $value) {
-            for ($i=1; $i <= 2 ; $i++) { 
-                if ($i == 1) {
+            // for ($i=1; $i <= 2 ; $i++) { 
+                // if ($i == 1) {
                     $t1 = FootballTeam::where('name', $value->team1)->get();
                     $t2 = FootballTeam::where('name', $value->team2)->get();
 
@@ -48,8 +48,8 @@ class BetDataExportController extends Controller
                         ];
                         array_push($games, $check);
                     }
-                }
-            }
+                // }
+            // }
         }
 
         for ($i=0; $i < sizeof($games)-1; $i++) { 
