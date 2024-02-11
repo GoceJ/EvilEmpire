@@ -189,12 +189,10 @@
             $.ajax({
                 type: "POST",
                 dataType: "json",
-                url: '{{ route("betDataExportController.dataCompare") }}',
+                // url: '{{ route("betDataExportController.dataCompare") }}', FOR LOCAL USE
+                url: '{{ env('REMOTE_HOST') }}/api/football/teamCompare', // FOR SERVER USE
                 data: jsonData,
                     success: function (data) {
-                        console.log(data)
-                        // id tbody
-                        // console.log(data.data);
                         data.data.forEach(element => {
                             let tbody = document.getElementById('tbody')
                             let gamesCountTr = document.createElement('tr')
@@ -221,24 +219,17 @@
 
                             tbody.append(gamesCountTr, winPercentage)
                         });
-
-                        
-
-
                             // let newRow = document.getElementById('div-data')
                             // let tr = document.createElement('tr')
                             // tr.innerHTML = '<th scope="row" class="id">' + data.data.id + '</th><td class="time_stamp">' + data.data.time_stamp + '</td><td class="basket_import">' + (data.data.basket_import ? '<i class="material-icons" style="color: green; font-weight: 800;">done</i>' : '<i class="material-icons" style="color: coral; font-weight: 800;">close</i>') + '</td><td class="player_import">' + (data.data.player_import ? '<i class="material-icons" style="color: green; font-weight: 800;">done</i>' : '<i class="material-icons" style="color: coral; font-weight: 800;">close</i>') + '</td><td class="football_import">' + (data.data.football_import ? '<i class="material-icons" style="color: green; font-weight: 800;">done</i>' : '<i class="material-icons" style="color: coral; font-weight: 800;">close</i>') + '</td><td class="basket_error">' + (data.data.basket_error ? '<i class="material-icons" style="color: red;">error</i>' : '<i class="material-icons" style="color: coral; font-weight: 800;">close</i>') + '</td><td class="player_error">' + (data.data.player_error ? '<i class="material-icons" style="color: red;">error</i>' : '<i class="material-icons" style="color: coral; font-weight: 800;">close</i>') + '</td><td class="football_error">' + (data.data.football_error ? '<i class="material-icons" style="color: red;">error</i>' : '<i class="material-icons" style="color: coral; font-weight: 800;">close</i>') + '</td>'
                             // newRow.prepend(tr)
-
-
                     },
                     error: function (xhr, ajaxOptions, thrownError) {
-                   
                         console.log(xhr)
                     },
-                headers: {
-                    'X-CSRF-Token': '{{ csrf_token() }}',
-                }
+                // headers: {
+                //     'X-CSRF-Token': '{{ csrf_token() }}',
+                // }
             });
 
             function trColoring(element, col) {
