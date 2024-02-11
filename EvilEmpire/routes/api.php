@@ -19,10 +19,7 @@ use App\Http\Controllers\Api\EventController;
 |
 */
 
-Route::group(['middleware' => 'cors'], function () {
-    Route::get('football/teamCompare', [BetDataExportController::class, 'apiTeamCompareResponse'])->name('api.football.teamCompare');
-
-});
+Route::post('football/teamCompare', [BetDataExportController::class, 'dataCompare'])->name('api.football.teamCompare');
 
 // Packet Users API - DONT TOUCH
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

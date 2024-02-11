@@ -15,10 +15,6 @@ class BetDataExportController extends Controller
         return view('pages.betDataExport.index');
     }
 
-    public function apiTeamCompareResponse() {
-        return FootballTeam::all();
-    }
-
     public function dataCompare(Request $request)
     {
         $data = json_decode($request->getContent());
@@ -62,7 +58,7 @@ class BetDataExportController extends Controller
             }
         }
 
-        echo json_encode(['data' => $games]);
+        return json_encode(['data' => $games]);
     }
 
     private function finalTip($matches) {
