@@ -21,8 +21,8 @@ class BetDataExportController extends Controller
 
         $games = [];
         foreach ($data as $value) {
-            $t1 = FootballTeam::where('name', $value->team1)->get();
-            $t2 = FootballTeam::where('name', $value->team2)->get();
+            $t2 = FootballTeam::where('name', $value->team1)->get();
+            $t1 = FootballTeam::where('name', $value->team2)->get();
 
             if (sizeof($t1) == 0 || sizeof($t2) == 0) {
                 continue;
