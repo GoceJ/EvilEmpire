@@ -193,8 +193,8 @@
             $.ajax({
                 type: "POST",
                 dataType: "json",
-                // url: '{{ route("betDataExportController.dataCompare") }}', FOR LOCAL USE
-                url: '{{ env('REMOTE_HOST') }}/api/football/teamCompare', // FOR SERVER USE
+                 url: '{{ route("betDataExportController.dataCompare") }}',// FOR LOCAL USE
+                // url: '{{ env('REMOTE_HOST') }}/api/football/teamCompare', // FOR SERVER USE
                 data: jsonData,
                     success: function (data) {
                         data.data.forEach(element => {
