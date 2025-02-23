@@ -208,7 +208,7 @@
                     navigator.clipboard.writeText(f.format(dateK))
 
                     // Check if data is appeared or not
-                    if(resultsIndex != -1 && (arr[dateIndex + 3] == 'ФУДБАЛ' || arr[dateIndex + 2] == 'ФУДБАЛ' || arr[dateIndex + 4] == 'ФУДБАЛ' || arr[dateIndex + 3] == 'КОШАРКА' || arr[dateIndex + 2] == 'КОШАРКА' || arr[dateIndex + 4] == 'КОШАРКА')){
+                    if(resultsIndex != -1 && (arr[dateIndex + 3].toUpperCase() == 'ФУДБАЛ' || arr[dateIndex + 2].toUpperCase() == 'ФУДБАЛ' || arr[dateIndex + 4].toUpperCase() == 'ФУДБАЛ' || arr[dateIndex + 3].toUpperCase() == 'КОШАРКА' || arr[dateIndex + 2].toUpperCase() == 'КОШАРКА' || arr[dateIndex + 4].toUpperCase() == 'КОШАРКА')){
                         // Find the index of table break ..1.12.2021
                         let indexOfBreak = null
                         for(let i = resultsIndex; i < arr.length; i++){
@@ -224,7 +224,7 @@
                         jsBasketball(onlyResults, onlyResults.length, dateShow)
                     } else {
                         // If basketball is not slected
-                        if(resultsIndex == -1 && (arr[dateIndex + 3] == 'ФУДБАЛ' || arr[dateIndex + 2] == 'ФУДБАЛ' || arr[dateIndex + 4] == 'ФУДБАЛ' || arr[dateIndex + 3] == 'КОШАРКА' || arr[dateIndex + 2] == 'КОШАРКА' || arr[dateIndex + 4] == 'КОШАРКА')){
+                        if(resultsIndex == -1 && (arr[dateIndex + 3].toUpperCase() == 'ФУДБАЛ' || arr[dateIndex + 2].toUpperCase() == 'ФУДБАЛ' || arr[dateIndex + 4].toUpperCase() == 'ФУДБАЛ' || arr[dateIndex + 3].toUpperCase() == 'КОШАРКА' || arr[dateIndex + 2].toUpperCase() == 'КОШАРКА' || arr[dateIndex + 4].toUpperCase() == 'КОШАРКА')){
                             let error = {
                                 'sport': 'basketball',
                                 'data_date': arr[dateIndex],
@@ -404,7 +404,7 @@
                     navigator.clipboard.writeText(f.format(dateK))
                         
                     // Check if data is appeared or not
-                    if(resultsIndex != -1 && (arr[dateIndex + 3] == 'ФУДБАЛ' || arr[dateIndex + 2] == 'ФУДБАЛ' || arr[dateIndex + 4] == 'ФУДБАЛ' || arr[dateIndex + 3] == 'КОШАРКА' || arr[dateIndex + 2] == 'КОШАРКА' || arr[dateIndex + 4] == 'КОШАРКА')){
+                    if(resultsIndex != -1 && (arr[dateIndex + 3].toUpperCase() == 'ФУДБАЛ' || arr[dateIndex + 2].toUpperCase() == 'ФУДБАЛ' || arr[dateIndex + 4].toUpperCase() == 'ФУДБАЛ' || arr[dateIndex + 3].toUpperCase() == 'КОШАРКА' || arr[dateIndex + 2].toUpperCase() == 'КОШАРКА' || arr[dateIndex + 4].toUpperCase() == 'КОШАРКА')){
                         // Find the index of table break ..1.12.2021
                         let indexOfBreak = null
                         for(let i = resultsIndex; i < arr.length; i++){
@@ -420,7 +420,7 @@
                         jsFootball(onlyResults, onlyResults.length, dateShow)
                     } else {
                         // If football is not slected
-                        if(resultsIndex == -1 && (arr[dateIndex + 3] == 'ФУДБАЛ' || arr[dateIndex + 2] == 'ФУДБАЛ' || arr[dateIndex + 4] == 'ФУДБАЛ' || arr[dateIndex + 3] == 'КОШАРКА' || arr[dateIndex + 2] == 'КОШАРКА' || arr[dateIndex + 4] == 'КОШАРКА')){
+                        if(resultsIndex == -1 && (arr[dateIndex + 3].toUpperCase() == 'ФУДБАЛ' || arr[dateIndex + 2].toUpperCase() == 'ФУДБАЛ' || arr[dateIndex + 4].toUpperCase() == 'ФУДБАЛ' || arr[dateIndex + 3].toUpperCase() == 'КОШАРКА' || arr[dateIndex + 2].toUpperCase() == 'КОШАРКА' || arr[dateIndex + 4].toUpperCase() == 'КОШАРКА')){
                             let error = {
                                     'sport': 'football',
                                     'data_date': arr[dateIndex],

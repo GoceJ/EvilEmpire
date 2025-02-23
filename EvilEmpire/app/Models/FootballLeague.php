@@ -12,6 +12,6 @@ class FootballLeague extends Model
 
     public function game(): HasMany
     {
-        return $this->hasMany(BasketballGame::class, 'league_id', 'id');
+        return $this->hasMany(FootballGame::class, 'league_id', 'id');
     }
 }
