@@ -9,19 +9,25 @@
 
         <title>{{ __('Administrators Dashboard') }}</title>
         <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('material') }}/img/apple-icon.png">
-        <link rel="icon" type="image/png" href="{{ asset('material') }}/img/ice.png">
+        <link rel="icon" type="image/png" href="{{ asset('material') }}/img/evilempirelogoLogo2.ico">
+        <!-- <link rel="icon" type="image/png" href="{{ asset('material') }}/img/ice.png"> -->
         
         <!--     Fonts and icons     -->
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Rubik+Glitch&family=Shadows+Into+Light&display=swap" rel="stylesheet">
         <!-- CSS Files -->
         <link href="{{ asset('material') }}/css/material-dashboard.css?v=2.1.1" rel="stylesheet" />
         <link href="{{ asset('css') }}/imagesGalery.css" rel="stylesheet" />
 
         <!-- CSS Just for demo purpose, don't include it in your project -->
         <link href="{{ asset('material') }}/demo/demo.css" rel="stylesheet" />
+        <link href="{{ asset('material') }}/evilempire/style.css" rel="stylesheet" />
 
+        
         <!-- Styles -->
         @livewireStyles
         @powerGridStyles

@@ -8,11 +8,11 @@ use App\Models\FootballGame;
 use App\Models\FootballTeam;
 use Illuminate\Http\Request;
 
-class BetDataExportController extends Controller
+class FootballBetDataExportController extends Controller
 {
     public function index()
     {
-        return view('pages.betDataExport.index');
+        return view('pages.footballBetDataExport.index');
     }
 
     public function dataCompare(Request $request)
@@ -40,6 +40,7 @@ class BetDataExportController extends Controller
                 continue;
             } else {
                 $check = [
+                    'route' => route('footballBetDataExport.show', ['footballBetDataExport' => $t1Id . ":" . $t2Id]),
                     'team1' => $gamesData[0]->t1name->name,
                     'team2' => $gamesData[0]->t2name->name,
                     'points' => $this->finalTip($gamesData)
@@ -190,6 +191,6 @@ class BetDataExportController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('pages.footballBetDataExport.show');
     }
 }

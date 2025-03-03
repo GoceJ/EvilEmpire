@@ -19,7 +19,7 @@ class FootballTableSeeder extends Seeder
      */
     public function run()
     {
-        $json = file_get_contents( __DIR__ . "../../../database/data/football_teams.json");
+        $json = file_get_contents( __DIR__ . "../../../database/data/seeded_data/football_teams.json");
         $jsonFormat = '[' . $json . ']';
         $teams = json_decode($jsonFormat);    
 

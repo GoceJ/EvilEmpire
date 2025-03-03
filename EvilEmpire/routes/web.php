@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\AjaxErrorController;
-use App\Http\Controllers\BetDataExportController;
+use App\Http\Controllers\FootballBetDataExportController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
@@ -41,8 +41,11 @@ Route::group(['middleware' => 'auth'], function () {
 	// Match
 	Route::resource('/matchExportController', MatchExportController::class);
 	Route::resource('/ajaxerror', AjaxErrorController::class);
-	Route::resource('/betDataExport', BetDataExportController::class);
-	Route::post('/betDataExport/dataCompare', [BetDataExportController::class, 'dataCompare'])->name('betDataExportController.dataCompare');
+
+	Route::resource('/footballBetDataExport', FootballBetDataExportController::class);
+	Route::post('/footballBetDataExportController/dataCompare', [FootballBetDataExportController::class, 'dataCompare'])->name('footballBetDataExportController.dataCompare');
+	
+	
 	Route::post('/matchExportController/storeBasketballPlayer', [MatchExportController::class, 'storeBasketballPlayer'])->name('matchExportController.storeBasketballPlayer');
 	Route::post('/matchExportController/storeBasketballTeam', [MatchExportController::class, 'storeBasketballTeam'])->name('matchExportController.storeBasketballTeam');
 	Route::post('/matchExportController/storeFootballTeam', [MatchExportController::class, 'storeFootballTeam'])->name('matchExportController.storeFootballTeam');

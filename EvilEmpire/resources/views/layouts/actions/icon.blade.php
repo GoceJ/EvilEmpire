@@ -1,1 +1,1 @@
-<i class="material-icons">{{ $icon }}</i>
+<i class="material-icons egraytext">{{ $icon }}</i>
