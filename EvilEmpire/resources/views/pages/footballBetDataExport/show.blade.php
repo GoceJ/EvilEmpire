@@ -15,6 +15,14 @@
 
             <input type="button" id="close" onclick="window.close()" value="asdasdsa"/>
 
+            <pre>
+              @foreach ($data as $value)
+              
+              {{ $value['t1'] }} : {{ $value['t2'] }} {{ $value['league_name'] }}
+              @endforeach
+            </pre>
+            
+            
               {{-- Title --}}
               <div class="row mx-0 my-2">
                 <p class="col-md-2 col-form-label">{{ __('Title:') }}</p>

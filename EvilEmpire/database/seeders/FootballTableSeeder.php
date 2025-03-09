@@ -19,9 +19,9 @@ class FootballTableSeeder extends Seeder
      */
     public function run()
     {
-        $json = file_get_contents( __DIR__ . "../../../database/data/seeded_data/football_teams.json");
+        $json = file_get_contents( __DIR__ . "../../../database/data/football_teams.json");
         $jsonFormat = '[' . $json . ']';
-        $teams = json_decode($jsonFormat);    
+        $teams = json_decode($jsonFormat);   
 
         foreach ($teams as $value) {
             try {
@@ -78,8 +78,8 @@ class FootballTableSeeder extends Seeder
             }
         }
 
-        file_put_contents(__DIR__ . '/../data/seeded_data/football_teams.json', $json . ',', FILE_APPEND);
-        file_put_contents(__DIR__ . '/../data/football_teams.json', '');
-        file_put_contents(__DIR__ . '/../data/logs/football_teams_seeded.txt', now() . PHP_EOL, FILE_APPEND);
+        // file_put_contents(__DIR__ . '/../data/seeded_data/football_teams.json', $json . ',', FILE_APPEND);
+        // file_put_contents(__DIR__ . '/../data/football_teams.json', '');
+        // file_put_contents(__DIR__ . '/../data/logs/football_teams_seeded.txt', now() . PHP_EOL, FILE_APPEND);
     }
 }

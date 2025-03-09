@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\BasketballGame;
-use App\Models\BasketballTeam;
 use App\Models\FootballGame;
 use App\Models\FootballTeam;
 use Illuminate\Http\Request;
+use App\Models\BasketballGame;
+use App\Models\BasketballTeam;
+use App\Http\Controllers\FootballStatistics;
 
 class FootballBetDataExportController extends Controller
 {
+    use FootballStatistics;
+
     public function index()
     {
         return view('pages.footballBetDataExport.index');
@@ -191,6 +194,34 @@ class FootballBetDataExportController extends Controller
      */
     public function show($id)
     {
-        return view('pages.footballBetDataExport.show');
+        $dataId = explode(':', $id);
+        $home = $dataId[0];
+        $away = $dataId[1];
+
+        // 1 vs 2 all season
+        $homeVSaway = $this->allGames($home, $away);
+
+        // 2 v 1 all season
+        $awayVShome = $this->allGames($away, $home);
+
+        // 1 v 2 current season
+        $homeVSawayCurrent = $this->bySeason($home, 1, $away);
+
+        // 2 v 1 current season
+        $awayVShomeCurrent = $this->bySeason($away, 1, $home);        
+    
+        // 1 v 2 last season
+        $homeVSawayLast = $this->bySeason($home, 2, $away);
+        
+        // 2 v 1 last season
+        $awayVShomeLast = $this->bySeason($away, 2, $home);
+
+        // 1 v X current season
+        $homeCurrent = $this->bySeason($home, 2);
+
+        // 2 v X current season
+        $awayLast = $this->bySeason($away, 1);
+
+        return view('pages.footballBetDataExport.show', ['data' => $awayVShomeLast]);
     }
 }
