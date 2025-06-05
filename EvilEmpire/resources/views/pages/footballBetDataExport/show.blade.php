@@ -16,9 +16,10 @@
             <input type="button" id="close" onclick="window.close()" value="asdasdsa"/>
 
             <pre>
+            {{ print_r($data) }}
               @foreach ($data as $value)
-              
-              {{ $value['t1'] }} : {{ $value['t2'] }} {{ $value['league_name'] }}
+              <pre>
+                
               @endforeach
             </pre>
             

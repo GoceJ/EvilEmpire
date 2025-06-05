@@ -86,6 +86,7 @@ class FootballBetDataExportController extends Controller
             }
 
             $gamesCounter++;
+           
             // 1 X 2
             if ($playedGames->points->t1_total > $playedGames->points->t2_total) {
                 $team1wins = $team1wins + 1;
@@ -222,6 +223,6 @@ class FootballBetDataExportController extends Controller
         // 2 v X current season
         $awayLast = $this->bySeason($away, 1);
 
-        return view('pages.footballBetDataExport.show', ['data' => $awayVShomeLast]);
+        return view('pages.footballBetDataExport.show', ['data' => $homeVSaway]);
     }
 }
